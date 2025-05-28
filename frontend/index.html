@@ -4,113 +4,410 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🎯 AI Interview Coach</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
+    
     body {
       font-family: 'Inter', sans-serif;
-      background: #f5f7fa;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       margin: 0;
       padding: 0;
       color: #333;
+      min-height: 100vh;
     }
+    
     header {
-      background: linear-gradient(135deg, #007BFF, #00c6ff);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       color: white;
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
+    
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
+    
     h1 {
       margin-top: 0;
-      font-size: 28px;
+      font-size: 32px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-    p {
+    
+    .subtitle {
+      font-size: 18px;
+      margin-top: 10px;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    
+    .input-section {
+      margin-bottom: 30px;
+    }
+    
+    label {
+      display: block;
       font-size: 16px;
-      margin-top: 8px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #374151;
     }
+    
     textarea {
       width: 100%;
       height: 200px;
-      padding: 15px;
+      padding: 20px;
       font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
       resize: vertical;
       font-family: inherit;
-      transition: border-color 0.3s ease;
-    }
-    textarea:focus {
-      border-color: #007BFF;
-      outline: none;
-    }
-    button {
-      margin-top: 15px;
-      padding: 12px 24px;
-      font-size: 16px;
-      background: linear-gradient(to right, #007BFF, #0056b3);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
-    }
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
-    }
-    #output {
-      margin-top: 30px;
-    }
-    .card {
       background: #ffffff;
-      border-left: 6px solid #007BFF;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-    .question {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .answer {
-      font-style: italic;
-      color: #444;
       line-height: 1.6;
     }
+    
+    textarea:focus {
+      border-color: #667eea;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    textarea::placeholder {
+      color: #9ca3af;
+    }
+    
+    .generate-btn {
+      width: 100%;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      margin-top: 20px;
+    }
+    
+    .generate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    }
+    
+    .generate-btn:active {
+      transform: translateY(0);
+    }
+    
+    #output {
+      margin-top: 40px;
+    }
+    
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    
+    .results-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 0;
+    }
+    
+    .copy-all-btn {
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .copy-all-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+    
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .question-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      border-color: #667eea;
+    }
+    
+    .question-header {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 24px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .question-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+      margin: 0;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .question-icon {
+      font-size: 24px;
+      animation: bounce 2s infinite;
+      color: #667eea;
+    }
+    
+    .question-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .toggle-answer-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .toggle-answer-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+    
+    .copy-qa-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .copy-qa-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    }
+    
+    .answer-section {
+      padding: 24px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .answer-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #059669;
+      margin-bottom: 12px;
+    }
+    
+    .answer-text {
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.7;
+      margin: 0;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #10b981;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+    
     .loading {
-      color: #888;
+      text-align: center;
+      padding: 60px 20px;
+      color: #6b7280;
       font-style: italic;
-      margin-top: 20px;
+      font-size: 18px;
     }
+    
+    .loading::before {
+      content: '🧠';
+      font-size: 32px;
+      display: block;
+      margin-bottom: 16px;
+      animation: pulse 2s infinite;
+    }
+    
     .error {
-      color: red;
-      font-weight: bold;
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      color: #dc2626;
+      font-weight: 600;
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 4px solid #dc2626;
       margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-
-    @media (max-width: 600px) {
-      .copy-btn {
-        font-size: 10px;
-        padding: 4px 8px;
+    
+    .error::before {
+      content: '❌';
+      font-size: 20px;
+    }
+    
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+      font-weight: 600;
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    .notification::before {
+      content: '✅';
+      font-size: 16px;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      to {
+        opacity: 1;
+        max-height: 500px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(-4px);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 24px;
+      }
+      
+      h1 {
+        font-size: 26px;
+      }
+      
+      .subtitle {
+        font-size: 16px;
+      }
+      
+      .results-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+      }
+      
+      .copy-all-btn {
+        justify-content: center;
+      }
+      
+      .question-text {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      
+      .question-controls {
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .toggle-answer-btn,
+      .copy-qa-btn {
+        justify-content: center;
+      }
+      
+      .notification {
+        right: 10px;
+        left: 10px;
+        transform: translateY(-100px);
+      }
+      
+      .notification.show {
+        transform: translateY(0);
       }
     }
   </style>
@@ -119,23 +416,37 @@
 
   <header>
     <h1>🎯 AI Interview Coach</h1>
-    <p>Get customized interview questions based on any job description</p>
+    <p class="subtitle">Get customized interview questions based on any job description</p>
   </header>
 
   <div class="container">
-    <label for="jobDescription"><strong>Paste Job Description:</strong></label>
-    <textarea id="jobDescription" placeholder="Paste job description here..."></textarea>
-
-    <button onclick="generateQuestions()">Generate Questions</button>
+    <div class="input-section">
+      <label for="jobDescription">📋 <strong>Paste Job Description:</strong></label>
+      <textarea 
+        id="jobDescription" 
+        placeholder="Paste the job description here and I'll generate tailored interview questions with example answers to help you prepare..."
+      ></textarea>
+      <button class="generate-btn" onclick="generateQuestions()">
+        ✨ Generate Questions
+      </button>
+    </div>
 
     <div id="output">Your interview questions will appear here.</div>
   </div>
 
   <script>
+    let questionsData = [];
+
     async function generateQuestions() {
-      const prompt = document.getElementById("jobDescription").value;
+      const prompt = document.getElementById("jobDescription").value.trim();
       const outputDiv = document.getElementById("output");
-      outputDiv.innerHTML = "<div class='loading'>🧠 Thinking...</div>";
+      
+      if (!prompt) {
+        outputDiv.innerHTML = "<div class='error'>Please paste a job description first!</div>";
+        return;
+      }
+      
+      outputDiv.innerHTML = "<div class='loading'>Analyzing job description and generating personalized questions...</div>";
 
       try {
         const response = await fetch("http://localhost:3000/api/generate", {
@@ -148,7 +459,7 @@
             messages: [
               {
                 role: "system",
-                content: "You are an AI Interview Coach. Based on the following job description, generate:\n\n1. The top 10 most likely interview questions for this role.\n2. For each question, give a short example answer."
+                content: "You are an AI Interview Coach. Based on the following job description, generate:\n\n1. The top 3 most likely interview questions for this role (for testing purposes).\n2. For each question, give a short example answer.\n\nFormat your response as:\n1. [Question]\n*Example Answer:* [Answer]\n\n2. [Question]\n*Example Answer:* [Answer]\n\n3. [Question]\n*Example Answer:* [Answer]"
               },
               {
                 role: "user",
@@ -165,53 +476,167 @@
         const data = await response.json();
         const aiResponse = data.choices[0].message.content;
 
-        const formattedOutput = formatInterviewQuestions(aiResponse);
-        outputDiv.innerHTML = formattedOutput;
+        questionsData = parseInterviewQuestions(aiResponse);
+        displayQuestions();
 
       } catch (error) {
-        outputDiv.innerHTML = "<div class='error'>❌ Error: Could not reach AI. Try again later.</div>";
+        outputDiv.innerHTML = "<div class='error'>Could not reach AI service. Please check your connection and try again.</div>";
         console.error(error);
       }
     }
 
-    function formatInterviewQuestions(text) {
+    function parseInterviewQuestions(text) {
       const lines = text.split('\n');
-      let html = '';
+      const questions = [];
       let currentQuestion = '';
       let currentAnswer = '';
-      let inQuestion = false;
+      let questionNumber = 0;
 
       lines.forEach(line => {
+        line = line.trim();
+        
+        // Match numbered questions (1. 2. 3. etc.)
         const questionMatch = line.match(/^(\d+)\.\s*(.+)$/);
         if (questionMatch) {
-          if (currentQuestion) {
-            html += `
-              <div class="card">
-                <div class="question">${currentQuestion}</div>
-                <div class="answer">${currentAnswer}</div>
-              </div>`;
+          // Save previous question if exists
+          if (currentQuestion && currentAnswer) {
+            questions.push({
+              number: questionNumber,
+              question: cleanText(currentQuestion),
+              answer: cleanText(currentAnswer)
+            });
           }
+          
+          questionNumber = parseInt(questionMatch[1]);
           currentQuestion = questionMatch[2];
           currentAnswer = '';
-          inQuestion = true;
-        } else if (line.startsWith('*Example Answer:*')) {
-          currentAnswer = line.replace('*Example Answer:*', '').trim();
-          inQuestion = false;
-        } else if (inQuestion && line.trim()) {
-          currentQuestion += ' ' + line.trim();
+        } 
+        // Match example answers
+        else if (line.toLowerCase().includes('example answer:') || line.toLowerCase().includes('*example answer:*')) {
+          currentAnswer = line.replace(/\*?example answer:\*?/i, '').trim();
+        }
+        // Continue building current question or answer
+        else if (line && !questionMatch) {
+          if (currentAnswer) {
+            currentAnswer += ' ' + line;
+          } else if (currentQuestion) {
+            currentQuestion += ' ' + line;
+          }
         }
       });
 
-      // Add the last one
+      // Don't forget the last question
       if (currentQuestion && currentAnswer) {
-        html += `
-          <div class="card">
-            <div class="question">${currentQuestion}</div>
-            <div class="answer">${currentAnswer}</div>
-          </div>`;
+        questions.push({
+          number: questionNumber,
+          question: cleanText(currentQuestion),
+          answer: cleanText(currentAnswer)
+        });
       }
 
-      return html;
+      return questions;
+    }
+
+    function cleanText(text) {
+      return text
+        .replace(/\*\*/g, '') // Remove ** markdown
+        .replace(/\*/g, '')   // Remove * markdown
+        .trim();
+    }
+
+    function displayQuestions() {
+      const outputDiv = document.getElementById("output");
+      
+      if (questionsData.length === 0) {
+        outputDiv.innerHTML = "<div class='error'>No questions could be generated. Please try with a different job description.</div>";
+        return;
+      }
+
+      let html = `
+        <div class="results-header">
+          <h2 class="results-title">📝 Your Interview Questions (${questionsData.length})</h2>
+          <button class="copy-all-btn" onclick="copyAllQuestions()">
+            📋 Copy All Questions
+          </button>
+        </div>
+      `;
+
+      questionsData.forEach((qa, index) => {
+        html += `
+          <div class="question-card">
+            <div class="question-header">
+              <h3 class="question-text">
+                <span class="question-icon">❓</span>
+                <span>${qa.number || index + 1}. ${qa.question}</span>
+              </h3>
+              <div class="question-controls">
+                <button class="copy-qa-btn" onclick="copyQuestionAnswer(${index})">
+                  📋 Copy Q&A
+                </button>
+              </div>
+            </div>
+            <div class="answer-section">
+              <div class="answer-label">
+                💡 Example Answer:
+              </div>
+              <p class="answer-text">${qa.answer}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      outputDiv.innerHTML = html;
+    }
+
+    function copyQuestionAnswer(index) {
+      const qa = questionsData[index];
+      const textToCopy = `Q: ${qa.question}\nA: ${qa.answer}`;
+      
+      copyToClipboard(textToCopy, 'Question & Answer copied!');
+    }
+
+    function copyAllQuestions() {
+      let textToCopy = 'AI Interview Coach - Interview Questions\n\n';
+      
+      questionsData.forEach((qa, index) => {
+        textToCopy += `${qa.number || index + 1}. ${qa.question}\n`;
+        textToCopy += `   Answer: ${qa.answer}\n\n`;
+      });
+      
+      copyToClipboard(textToCopy, 'All questions copied!');
+    }
+
+    function copyToClipboard(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        showNotification(message);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+        showNotification('Copy failed. Please try again.');
+      });
+    }
+
+    function showNotification(message) {
+      // Remove existing notification
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      
+      // Create new notification
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      // Show notification
+      setTimeout(() => notification.classList.add('show'), 100);
+      
+      // Hide notification after 3 seconds
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+      }, 3000);
     }
   </script>
 
