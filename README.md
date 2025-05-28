@@ -18,15 +18,17 @@ AI Interview Coach helps job seekers prepare for interviews by:
 
 ### Current Features
 - **Smart Question Generation**: AI-powered interview questions based on job descriptions
+- **Interview Tips & Best Practices**: Comprehensive do's and don'ts guidance (Free for all users)
 - **Copy & Share**: Easy sharing of questions and answers
 - **Responsive Design**: Works seamlessly on desktop and mobile
 - **Real-time Processing**: Fast AI-powered question generation
 
 ### Coming Soon
-- **Interview Tips & Best Practices**: Do's and Don'ts guidance system
-- **User Accounts**: Save progress and track improvement
-- **Practice Mode**: Record and analyze your answers
-- **Industry Templates**: Pre-built question sets by industry
+- **Ad-Supported Free Tier**: Quality content with relevant career advertisements
+- **Resume Analysis**: Upload resume for personalized questions and answers
+- **User Accounts**: Save progress and track improvement over time
+- **Practice Mode**: Record and analyze your interview answers
+- **Premium Subscription**: Ad-free experience with advanced features
 - **Rate Limiting**: API protection and usage management
 
 ## 🚀 Quick Start
@@ -290,13 +292,44 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Community contributors and feedback
 - Open source libraries and dependencies
 
-## 📊 Project Stats
+## 💼 Pricing & Features
 
-- **Lines of Code**: ~500
-- **Dependencies**: 4 (backend)
-- **Supported Browsers**: Chrome, Firefox, Safari, Edge
-- **Performance**: <2s average response time
-- **Accessibility**: WCAG 2.1 AA (planned)
+### 🆓 Free Tier (Ad-Supported)
+- ✅ **5 interview questions** per month
+- ✅ **Unlimited interview tips** and best practices
+- ✅ **Copy & share** functionality
+- ✅ **Mobile responsive** interface
+- ⚠️ **Relevant career ads** displayed
+- 📈 **Upgrade prompts** for premium features
+
+### 💎 Premium Tier - $9/month
+- ✅ **Everything in Free tier**
+- ✅ **NO ADS** - Clean, distraction-free experience
+- ✅ **Resume analysis** with personalized questions (50/month)
+- ✅ **Practice mode** with answer recording and feedback
+- ✅ **Progress tracking** and performance analytics
+- ✅ **Industry-specific templates**
+- ✅ **Priority customer support**
+
+### 🏢 Enterprise Tier - $29/month
+- ✅ **Everything in Premium tier**
+- ✅ **Unlimited** questions and resume analysis
+- ✅ **Team management** and collaboration features
+- ✅ **Custom branding** options
+- ✅ **API access** for integrations
+- ✅ **Advanced analytics** and reporting
+- ✅ **Dedicated account manager**
+
+---
+
+## 📊 Revenue Model
+
+Our sustainable business model combines:
+- **Ad Revenue**: Career-relevant advertisements for free users
+- **Premium Subscriptions**: Advanced features without ads
+- **Enterprise Solutions**: Team and organization features
+
+**Projected Growth**: $1K-3K/month (Month 3) → $15K-30K/month (Month 12)
 
 ---
 

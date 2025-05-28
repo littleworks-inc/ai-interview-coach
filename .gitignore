@@ -221,3 +221,6 @@ docker-compose.override.yml
 *.rar
 .eslintcache
 .stylelintcache
+
+
+monetization-plan.md

@@ -29,6 +29,42 @@
   - Restrict CORS to specific domains
   - Add security headers (CSP, HSTS, X-Frame-Options)
 
+---
+
+## 💰 Monetization Strategy (High Priority)
+
+### Ad-Supported Free Tier
+- [ ] **Google AdSense Integration**
+  - Set up AdSense account and verification
+  - Implement responsive ad units
+  - Strategic ad placement between content sections
+  - Mobile-optimized ad formats
+- [ ] **Ad Management System**
+  - Conditional ad display (free tier only)
+  - Ad blocker detection and handling
+  - A/B testing framework for ad placement
+  - Revenue tracking and analytics
+- [ ] **User Tier Management**
+  - Tier detection and management system
+  - Feature gating based on user tier
+  - Usage tracking and limits enforcement
+- [ ] **Premium Upgrade Flow**
+  - Upgrade prompts and messaging
+  - Payment processing integration (Stripe)
+  - Subscription management system
+  - Conversion tracking and optimization
+
+### Revenue Optimization
+- [ ] **Performance Tracking**
+  - Ad revenue monitoring and reporting
+  - Premium conversion rate tracking
+  - User engagement analytics by tier
+  - ROI analysis and optimization
+- [ ] **Partner Integrations**
+  - Job board advertising partnerships
+  - Career service affiliate programs
+  - Professional development course promotions
+
 ### Frontend Security
 - [ ] **XSS Prevention**
   - Sanitize HTML before innerHTML injection
@@ -114,6 +150,23 @@
   - Behavioral question frameworks
   - Case study scenarios
   - Situational judgment questions
+
+### Resume Analysis & Personalization
+- [ ] **Resume Upload & Processing**
+  - PDF/Word resume upload functionality
+  - Text extraction and parsing system
+  - Skills identification (technologies, tools, frameworks)
+  - Experience level detection (years, roles, seniority)
+- [ ] **Token-Efficient Analysis**
+  - Resume preprocessing and summarization
+  - Cached resume profiles to reduce API costs
+  - Smart chunking strategy for large resumes
+  - Skill matching and gap analysis
+- [ ] **Personalized Question Generation**
+  - Context-aware questions based on resume + job description
+  - Experience-level appropriate answers
+  - Skill gap bridging strategies
+  - Realistic answer generation (no over-qualification)
 
 ---
 
@@ -249,9 +302,97 @@
 
 ## Priority Levels & Timeline:
 - **🔴 Critical (Week 1-2)**: Security fixes, rate limiting, basic functionality
-- **🟡 High (Week 3-4)**: Core user features, tips system, user accounts
-- **🟢 Medium (Week 5-8)**: Engagement features, analytics, mobile optimization
+- **🟡 High (Week 3-4)**: Monetization setup, tips system, user accounts
+- **🟢 Medium (Week 5-8)**: Resume analysis, engagement features, mobile optimization
 - **🔵 Low (Month 3+)**: Advanced features, integrations, community features
+
+---
+
+## 📊 Monetization Breakdown:
+
+### Free Tier (Ad-Supported)
+```
+Features:
+✅ 5 basic interview questions per month
+✅ All interview tips & best practices (unlimited)
+✅ Copy/share functionality
+✅ Mobile responsive interface
+⚠️ Relevant career ads displayed
+📈 Gentle premium upgrade prompts
+
+Revenue Model:
+- Ad revenue: $2-5 per user per month
+- Conversion target: 5-10% to premium
+```
+
+### Premium Tier ($9/month)
+```
+Features:
+✅ Everything in Free tier
+✅ NO ADS - Clean, distraction-free experience
+✅ Resume analysis & personalized questions (50/month)
+✅ Practice mode with answer recording
+✅ Progress tracking & performance analytics
+✅ Industry-specific templates
+✅ Priority customer support
+
+Revenue Model:
+- Direct subscription revenue
+- Higher user satisfaction and retention
+```
+
+### Enterprise Tier ($29/month)
+```
+Features:
+✅ Everything in Premium tier
+✅ Unlimited questions and resume analysis
+✅ Team management and collaboration features
+✅ Custom branding options
+✅ API access for integrations
+✅ Advanced analytics and reporting
+✅ Dedicated account manager
+```
+
+---
+
+## 🎯 Revenue Projections:
+
+### Month 1-3 (Launch Phase)
+- **Free Users**: 500 users → $1,000-2,500 ad revenue
+- **Premium**: 25 users (5% conversion) → $225/month
+- **Total**: $1,225-2,725/month
+
+### Month 6 (Growth Phase)
+- **Free Users**: 2,000 users → $4,000-10,000 ad revenue
+- **Premium**: 150 users (7.5% conversion) → $1,350/month
+- **Enterprise**: 5 users → $145/month
+- **Total**: $5,495-11,495/month
+
+### Month 12 (Scale Phase)
+- **Free Users**: 5,000 users → $10,000-25,000 ad revenue
+- **Premium**: 500 users (10% conversion) → $4,500/month
+- **Enterprise**: 20 users → $580/month
+- **Total**: $15,080-30,080/month
+
+---
+
+## 🔄 Token Cost Management Strategy:
+
+### Cost-Effective Features (Low Token Usage)
+- **Interview Tips**: ~200 tokens per request
+- **Basic Questions**: ~800 tokens per request
+- **Cached Content**: Minimal ongoing costs
+
+### Premium Features (Higher Token Usage)
+- **Resume Analysis**: ~2,000-4,000 tokens per request
+- **Personalized Questions**: ~1,500-2,500 tokens per request
+- **Answer Feedback**: ~1,000-1,500 tokens per request
+
+### Cost Control Measures
+- **Preprocessing**: Reduce resume to key data points
+- **Caching**: Store processed resume profiles
+- **Batching**: Process multiple jobs with same resume
+- **Tier Limits**: Control usage per tier level
 
 ---
 
