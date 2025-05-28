@@ -222,5 +222,21 @@ docker-compose.override.yml
 .eslintcache
 .stylelintcache
 
-
+# Business & Financial Information (CONFIDENTIAL)
+# ==========================================
+revenue-projections.md
+business-projections.md
 monetization-plan.md
+financial-analysis.md
+pricing-strategy.md
+competitor-analysis.md
+partnership-agreements.md
+business-plan.md
+investor-deck.md
+financial-models.xlsx
+revenue-models.xlsx
+*.financial
+*.business
+business/
+financials/
+projections/
