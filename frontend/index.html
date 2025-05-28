@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎯 AI Interview Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #007BFF, #00c6ff);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+    p {
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: linear-gradient(to right, #007BFF, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+    }
+    #output {
+      margin-top: 30px;
+    }
+    .card {
+      background: #ffffff;
+      border-left: 6px solid #007BFF;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .answer {
+      font-style: italic;
+      color: #444;
+      line-height: 1.6;
+    }
+    .loading {
+      color: #888;
+      font-style: italic;
+      margin-top: 20px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .copy-btn {
+        font-size: 10px;
+        padding: 4px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎯 AI Interview Coach</h1>
+    <p>Get customized interview questions based on any job description</p>
+  </header>
+
+  <div class="container">
+    <label for="jobDescription"><strong>Paste Job Description:</strong></label>
+    <textarea id="jobDescription" placeholder="Paste job description here..."></textarea>
+
+    <button onclick="generateQuestions()">Generate Questions</button>
+
+    <div id="output">Your interview questions will appear here.</div>
+  </div>
+
+  <script>
+    async function generateQuestions() {
+      const prompt = document.getElementById("jobDescription").value;
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "<div class='loading'>🧠 Thinking...</div>";
+
+      try {
+        const response = await fetch("http://localhost:3000/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "qwen/qwen3-30b-a3b:free",
+            messages: [
+              {
+                role: "system",
+                content: "You are an AI Interview Coach. Based on the following job description, generate:\n\n1. The top 10 most likely interview questions for this role.\n2. For each question, give a short example answer."
+              },
+              {
+                role: "user",
+                content: prompt
+              }
+            ]
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("API error: " + (await response.text()));
+        }
+
+        const data = await response.json();
+        const aiResponse = data.choices[0].message.content;
+
+        const formattedOutput = formatInterviewQuestions(aiResponse);
+        outputDiv.innerHTML = formattedOutput;
+
+      } catch (error) {
+        outputDiv.innerHTML = "<div class='error'>❌ Error: Could not reach AI. Try again later.</div>";
+        console.error(error);
+      }
+    }
+
+    function formatInterviewQuestions(text) {
+      const lines = text.split('\n');
+      let html = '';
+      let currentQuestion = '';
+      let currentAnswer = '';
+      let inQuestion = false;
+
+      lines.forEach(line => {
+        const questionMatch = line.match(/^(\d+)\.\s*(.+)$/);
+        if (questionMatch) {
+          if (currentQuestion) {
+            html += `
+              <div class="card">
+                <div class="question">${currentQuestion}</div>
+                <div class="answer">${currentAnswer}</div>
+              </div>`;
+          }
+          currentQuestion = questionMatch[2];
+          currentAnswer = '';
+          inQuestion = true;
+        } else if (line.startsWith('*Example Answer:*')) {
+          currentAnswer = line.replace('*Example Answer:*', '').trim();
+          inQuestion = false;
+        } else if (inQuestion && line.trim()) {
+          currentQuestion += ' ' + line.trim();
+        }
+      });
+
+      // Add the last one
+      if (currentQuestion && currentAnswer) {
+        html += `
+          <div class="card">
+            <div class="question">${currentQuestion}</div>
+            <div class="answer">${currentAnswer}</div>
+          </div>`;
+      }
+
+      return html;
+    }
+  </script>
+
+</body>
+</html>
