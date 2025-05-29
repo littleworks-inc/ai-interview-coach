@@ -28,11 +28,14 @@ function showCategory(categoryId) {
     }
   });
   
-  // Scroll to top of content
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+  // Scroll to content area instead of top of page
+  const contentArea = document.querySelector('.category-content.active');
+  if (contentArea) {
+    contentArea.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  }
   
   console.log('[TIPS PAGE] Showing category:', categoryId);
 }
