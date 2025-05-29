@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💡 Interview Tips & Best Practices - AI Interview Coach</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tips-page.css">
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header>
+    <nav class="header-navbar">
+      <!-- Brand -->
+      <a href="index.html" class="header-brand">
+        <span class="brand-icon">🎯</span>
+        <div class="brand-text">
+          <h1>AI Interview Coach</h1>
+          <p class="subtitle">Smart interview preparation</p>
+        </div>
+      </a>
+      
+      <!-- Main Navigation -->
+      <div class="main-nav" id="mainNav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <span class="nav-icon">🎯</span>
+              Question Generator
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tips.html" class="nav-link active">
+              <span class="nav-icon">💡</span>
+              Interview Tips
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link coming-soon">
+              <span class="nav-icon">📝</span>
+              Resume Analysis
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link coming-soon">
+              <span class="nav-icon">🎤</span>
+              Practice Mode
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        ☰
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h2 class="hero-title">Interview Tips & Best Practices</h2>
+      <p class="hero-subtitle">Master your next interview with proven strategies and expert guidance across all interview types</p>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Category Navigation -->
+    <div class="category-nav">
+      <button class="category-btn active" onclick="showCategory('communication')" data-category="communication">
+        <span class="category-icon">💬</span>
+        <span class="category-title">Communication</span>
+      </button>
+      <button class="category-btn" onclick="showCategory('technical')" data-category="technical">
+        <span class="category-icon">💻</span>
+        <span class="category-title">Technical</span>
+      </button>
+      <button class="category-btn" onclick="showCategory('behavioral')" data-category="behavioral">
+        <span class="category-icon">🎯</span>
+        <span class="category-title">Behavioral</span>
+      </button>
+      <button class="category-btn" onclick="showCategory('body-language')" data-category="body-language">
+        <span class="category-icon">🤝</span>
+        <span class="category-title">Body Language</span>
+      </button>
+      <button class="category-btn" onclick="showCategory('preparation')" data-category="preparation">
+        <span class="category-icon">📚</span>
+        <span class="category-title">Preparation</span>
+      </button>
+    </div>
+
+    <!-- Communication & Presentation -->
+    <div id="communication" class="category-content active">
+      <div class="category-header">
+        <h2>💬 Communication & Presentation</h2>
+        <p>Master the art of clear, confident communication during interviews</p>
+      </div>
+      
+      <!-- Tips Stats -->
+      <div class="tips-stats">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">DO's</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">DON'Ts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Total Tips</span>
+        </div>
+      </div>
+      
+      <div class="tips-grid">
+        <!-- DO Tips -->
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Maintain appropriate eye contact</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Make eye contact 60-70% of the time. Look at the interviewer when they're speaking and when you're making key points.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                When answering 'Tell me about yourself,' look at the interviewer while highlighting your key achievements.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Speak clearly and at a moderate pace</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Speak slowly enough to be understood, but not so slow that you seem uncertain. Pause between thoughts.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of rushing through your experience, take brief pauses: "I led a team of five developers... [pause] ... and we delivered the project two weeks ahead of schedule."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Practice active listening</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Show you're engaged by nodding, asking clarifying questions, and referencing what the interviewer said.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "You mentioned earlier that teamwork is crucial here. In my last role, I collaborated closely with the design team to..."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DON'T Tips -->
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't overuse filler words</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Minimize "um," "uh," "like," and "you know." It's better to pause briefly than to fill silence with these words.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of: "So, um, like, I worked on, uh, several projects..." Say: "I worked on several key projects... [brief pause] ...including a customer portal redesign."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't interrupt the interviewer</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Let them finish their questions completely. If you need clarification, wait for them to finish, then ask.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Wait for the complete question, then respond: "That's a great question about leadership. Could you clarify what type of leadership scenario you'd like me to focus on?"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical Interview Excellence -->
+    <div id="technical" class="category-content">
+      <div class="category-header">
+        <h2>💻 Technical Interview Excellence</h2>
+        <p>Navigate technical questions and coding challenges with confidence</p>
+      </div>
+      
+      <div class="tips-stats">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">DO's</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">DON'Ts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Total Tips</span>
+        </div>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Think out loud during problem-solving</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Verbalize your thought process when tackling technical problems. This shows your problem-solving approach.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "I'm thinking about this as a sorting problem... Let me consider the time complexity... A merge sort would be O(n log n)..."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Ask clarifying questions for technical problems</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Before diving into a solution, make sure you understand the requirements, constraints, and expected inputs/outputs.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "Before I start coding, can I clarify: What's the expected size of the input? Are there any memory constraints I should consider?"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Discuss trade-offs in your solutions</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Show you understand different approaches by explaining why you chose your solution and what alternatives exist.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "I'm choosing a hash map here for O(1) lookup time, which uses more memory but gives us better performance than a linear search."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't jump straight into coding</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Take time to understand the problem, discuss your approach, and get alignment before writing code.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of immediately coding, say: "Let me make sure I understand this correctly..." and outline your approach first.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't give up if you're stuck</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              If you're struggling, explain where you're stuck and ask for hints. Show resilience and problem-solving persistence.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "I'm having trouble optimizing this further. Could you give me a hint about the data structure that might work better here?"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Behavioral Questions & STAR Method -->
+    <div id="behavioral" class="category-content">
+      <div class="category-header">
+        <h2>🎯 Behavioral Questions & STAR Method</h2>
+        <p>Master behavioral interviews using proven storytelling frameworks</p>
+      </div>
+      
+      <div class="tips-stats">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">DO's</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">DON'Ts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Total Tips</span>
+        </div>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Use the STAR method for behavioral questions</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Structure answers with Situation, Task, Action, Result. This provides clear, complete responses to behavioral questions.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Situation: "Our team was behind on a critical project..." Task: "I needed to get us back on track..." Action: "I organized daily standups..." Result: "We delivered on time with 98% quality score."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Prepare 5-7 detailed examples</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Have specific stories ready that demonstrate leadership, problem-solving, teamwork, conflict resolution, and achievement.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Prepare stories for: overcoming a challenge, leading a team, dealing with conflict, learning from failure, achieving a goal, working under pressure.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Quantify your results when possible</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Use specific numbers, percentages, timeframes to make your impact clear and memorable.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "I reduced processing time by 40%, saved the company $50K annually, and improved customer satisfaction scores from 3.2 to 4.7."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't give vague or generic answers</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Avoid answers like "I'm a team player" without specific examples. Always back up claims with concrete stories.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of "I'm good at problem-solving," say: "When our main server crashed during peak hours, I quickly identified the issue, implemented a workaround, and had us back online in 15 minutes."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't focus excessively on problems or blame others</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Even when discussing challenges, focus on your actions and learnings rather than dwelling on problems or blaming teammates.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of "My manager was terrible and the project was a disaster," say: "I learned to adapt my communication style and found ways to keep the project moving forward despite challenges."
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body Language & Presence -->
+    <div id="body-language" class="category-content">
+      <div class="category-header">
+        <h2>🤝 Body Language & Presence</h2>
+        <p>Project confidence and professionalism through your physical presence</p>
+      </div>
+      
+      <div class="tips-stats">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">DO's</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">DON'Ts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Total Tips</span>
+        </div>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Maintain confident, open posture</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Sit up straight, keep shoulders back, and avoid crossing arms. Lean slightly forward to show engagement.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Sit with both feet on the floor, hands visible on the table or in your lap, maintaining an open chest position throughout the interview.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Offer a firm, confident handshake</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Make eye contact, smile, and give a firm (not crushing) handshake when greeting interviewers.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Stand up, make eye contact, smile genuinely, and say "It's great to meet you" with a confident handshake that matches their grip strength.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Use purposeful hand gestures</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Natural hand movements can emphasize points, but keep gestures controlled and purposeful.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                When explaining a process, use your hands to show progression or size. When making three points, count them on your fingers.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't fidget or display nervous habits</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Avoid pen clicking, leg bouncing, hair touching, or other repetitive movements that can be distracting.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Keep your hands occupied by holding a portfolio or resting them calmly. If you tend to fidget, practice sitting still during mock interviews.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't adopt closed or defensive postures</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Avoid crossing arms, leaning away, or turning your body away from the interviewer. These signal discomfort or disengagement.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Instead of crossing arms when thinking, place one hand on your chin or keep both hands visible and relaxed.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview Preparation & Research -->
+    <div id="preparation" class="category-content">
+      <div class="category-header">
+        <h2>📚 Interview Preparation & Research</h2>
+        <p>Set yourself up for success with thorough preparation strategies</p>
+      </div>
+      
+      <div class="tips-stats">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">DO's</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">DON'Ts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Total Tips</span>
+        </div>
+      </div>
+      
+      <div class="tips-grid">
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Research the company thoroughly</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Study the company's mission, recent news, products, culture, and the specific team you'd be joining.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Read their latest blog posts, annual reports, recent press releases, and employee reviews on Glassdoor. Follow their LinkedIn and social media.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Prepare thoughtful questions to ask</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Have 5-7 specific questions ready about the role, team, company culture, growth opportunities, and challenges.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                "What does success look like in this role after the first 90 days?" "What are the biggest technical challenges the team is facing?" "How does the company support professional development?"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-do">
+          <div class="tip-header">
+            <div class="tip-badge-large do">✅ DO</div>
+            <h3 class="tip-title">Practice answers to common questions</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Rehearse responses to standard questions, but don't memorize scripts. Practice until your answers flow naturally.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Practice: "Tell me about yourself," "Why do you want this job?" "What's your greatest weakness?" "Where do you see yourself in 5 years?"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't wing it without preparation</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Even if you're highly qualified, lack of preparation shows and can cost you the opportunity.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Don't assume you can "figure it out" during the interview. Spend at least 2-3 hours researching and preparing beforehand.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card tip-dont">
+          <div class="tip-header">
+            <div class="tip-badge-large dont">❌ DON'T</div>
+            <h3 class="tip-title">Don't ask generic or easily googled questions</h3>
+          </div>
+          <div class="tip-content">
+            <div class="tip-description">
+              Avoid questions about basic company info that's readily available online. This shows you didn't do your homework.
+            </div>
+            <div class="tip-example">
+              <div class="tip-example-label">
+                <span class="example-icon">💡</span>
+                Example
+              </div>
+              <div class="tip-example-text">
+                Don't ask "What does your company do?" or "How big is your team?" Instead, ask about specific challenges or growth plans.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="print-section">
+      <button onclick="window.print()" class="print-btn">
+        🖨️ Print Interview Tips
+      </button>
+      <p class="print-note">Perfect for quick reference during interview preparation</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Made with ❤️ for job seekers worldwide | <a href="index.html">Back to Question Generator</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/navigation.js"></script>
+  <script src="js/tips-page.js"></script>
+
+</body>
+</html>

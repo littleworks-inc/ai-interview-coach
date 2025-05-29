@@ -20,6 +20,8 @@ const {
 } = require('./middleware/errorHandler');
 const { RATE_LIMITS, HTTP_STATUS } = require('./utils/constants');
 
+const tipsRouter = require('./routes/tips');
+
 // Setup global error handlers
 setupGlobalErrorHandlers();
 
@@ -145,10 +147,14 @@ app.get('/', (req, res) => {
     status: 'running',
     endpoints: {
       generate: 'POST /api/generate',
+      tips: 'GET /api/tips',           // NEW
       health: 'GET /health'
     }
   });
 });
+
+// Tips endpoints - NEW ADDITION
+app.use('/api/tips', tipsRouter);
 
 // Main AI generation endpoint with full security stack
 app.post('/api/generate', 

@@ -1,0 +1,225 @@
+{
+  "categories": [
+    {
+      "id": "communication",
+      "title": "Communication & Presentation",
+      "icon": "💬",
+      "description": "Master the art of clear, confident communication during interviews",
+      "tips": [
+        {
+          "id": "eye_contact",
+          "type": "do",
+          "title": "Maintain appropriate eye contact",
+          "description": "Make eye contact 60-70% of the time. Look at the interviewer when they're speaking and when you're making key points.",
+          "example": "When answering 'Tell me about yourself,' look at the interviewer while highlighting your key achievements."
+        },
+        {
+          "id": "speak_clearly",
+          "type": "do", 
+          "title": "Speak clearly and at a moderate pace",
+          "description": "Speak slowly enough to be understood, but not so slow that you seem uncertain. Pause between thoughts.",
+          "example": "Instead of rushing through your experience, take brief pauses: 'I led a team of five developers... [pause] ... and we delivered the project two weeks ahead of schedule.'"
+        },
+        {
+          "id": "active_listening",
+          "type": "do",
+          "title": "Practice active listening",
+          "description": "Show you're engaged by nodding, asking clarifying questions, and referencing what the interviewer said.",
+          "example": "You mentioned earlier that teamwork is crucial here. In my last role, I collaborated closely with the design team to..."
+        },
+        {
+          "id": "avoid_filler_words",
+          "type": "dont",
+          "title": "Don't overuse filler words",
+          "description": "Minimize 'um,' 'uh,' 'like,' and 'you know.' It's better to pause briefly than to fill silence with these words.",
+          "example": "Instead of: 'So, um, like, I worked on, uh, several projects...' Say: 'I worked on several key projects... [brief pause] ...including a customer portal redesign.'"
+        },
+        {
+          "id": "avoid_interrupting",
+          "type": "dont",
+          "title": "Don't interrupt the interviewer",
+          "description": "Let them finish their questions completely. If you need clarification, wait for them to finish, then ask.",
+          "example": "Wait for the complete question, then respond: 'That's a great question about leadership. Could you clarify what type of leadership scenario you'd like me to focus on?'"
+        }
+      ]
+    },
+    {
+      "id": "technical",
+      "title": "Technical Interview Excellence", 
+      "icon": "💻",
+      "description": "Navigate technical questions and coding challenges with confidence",
+      "tips": [
+        {
+          "id": "think_aloud",
+          "type": "do",
+          "title": "Think out loud during problem-solving",
+          "description": "Verbalize your thought process when tackling technical problems. This shows your problem-solving approach.",
+          "example": "'I'm thinking about this as a sorting problem... Let me consider the time complexity... A merge sort would be O(n log n)...'"
+        },
+        {
+          "id": "ask_clarifying_questions", 
+          "type": "do",
+          "title": "Ask clarifying questions for technical problems",
+          "description": "Before diving into a solution, make sure you understand the requirements, constraints, and expected inputs/outputs.",
+          "example": "'Before I start coding, can I clarify: What's the expected size of the input? Are there any memory constraints I should consider?'"
+        },
+        {
+          "id": "explain_tradeoffs",
+          "type": "do",
+          "title": "Discuss trade-offs in your solutions",
+          "description": "Show you understand different approaches by explaining why you chose your solution and what alternatives exist.",
+          "example": "'I'm choosing a hash map here for O(1) lookup time, which uses more memory but gives us better performance than a linear search.'"
+        },
+        {
+          "id": "avoid_jumping_to_code",
+          "type": "dont",
+          "title": "Don't jump straight into coding",
+          "description": "Take time to understand the problem, discuss your approach, and get alignment before writing code.",
+          "example": "Instead of immediately coding, say: 'Let me make sure I understand this correctly...' and outline your approach first."
+        },
+        {
+          "id": "avoid_giving_up",
+          "type": "dont", 
+          "title": "Don't give up if you're stuck",
+          "description": "If you're struggling, explain where you're stuck and ask for hints. Show resilience and problem-solving persistence.",
+          "example": "'I'm having trouble optimizing this further. Could you give me a hint about the data structure that might work better here?'"
+        }
+      ]
+    },
+    {
+      "id": "behavioral",
+      "title": "Behavioral Questions & STAR Method",
+      "icon": "🎯", 
+      "description": "Master behavioral interviews using proven storytelling frameworks",
+      "tips": [
+        {
+          "id": "use_star_method",
+          "type": "do",
+          "title": "Use the STAR method for behavioral questions",
+          "description": "Structure answers with Situation, Task, Action, Result. This provides clear, complete responses to behavioral questions.",
+          "example": "Situation: 'Our team was behind on a critical project...' Task: 'I needed to get us back on track...' Action: 'I organized daily standups...' Result: 'We delivered on time with 98% quality score.'"
+        },
+        {
+          "id": "prepare_specific_examples",
+          "type": "do",
+          "title": "Prepare 5-7 detailed examples",
+          "description": "Have specific stories ready that demonstrate leadership, problem-solving, teamwork, conflict resolution, and achievement.",
+          "example": "Prepare stories for: overcoming a challenge, leading a team, dealing with conflict, learning from failure, achieving a goal, working under pressure."
+        },
+        {
+          "id": "quantify_results",
+          "type": "do",
+          "title": "Quantify your results when possible",
+          "description": "Use specific numbers, percentages, timeframes to make your impact clear and memorable.",
+          "example": "'I reduced processing time by 40%, saved the company $50K annually, and improved customer satisfaction scores from 3.2 to 4.7.'"
+        },
+        {
+          "id": "avoid_vague_answers",
+          "type": "dont",
+          "title": "Don't give vague or generic answers",
+          "description": "Avoid answers like 'I'm a team player' without specific examples. Always back up claims with concrete stories.",
+          "example": "Instead of 'I'm good at problem-solving,' say: 'When our main server crashed during peak hours, I quickly identified the issue, implemented a workaround, and had us back online in 15 minutes.'"
+        },
+        {
+          "id": "avoid_negative_focus",
+          "type": "dont",
+          "title": "Don't focus excessively on problems or blame others",
+          "description": "Even when discussing challenges, focus on your actions and learnings rather than dwelling on problems or blaming teammates.",
+          "example": "Instead of 'My manager was terrible and the project was a disaster,' say: 'I learned to adapt my communication style and found ways to keep the project moving forward despite challenges.'"
+        }
+      ]
+    },
+    {
+      "id": "body_language",
+      "title": "Body Language & Presence",
+      "icon": "🤝",
+      "description": "Project confidence and professionalism through your physical presence",
+      "tips": [
+        {
+          "id": "confident_posture",
+          "type": "do",
+          "title": "Maintain confident, open posture",
+          "description": "Sit up straight, keep shoulders back, and avoid crossing arms. Lean slightly forward to show engagement.",
+          "example": "Sit with both feet on the floor, hands visible on the table or in your lap, maintaining an open chest position throughout the interview."
+        },
+        {
+          "id": "firm_handshake",
+          "type": "do",
+          "title": "Offer a firm, confident handshake",
+          "description": "Make eye contact, smile, and give a firm (not crushing) handshake when greeting interviewers.",
+          "example": "Stand up, make eye contact, smile genuinely, and say 'It's great to meet you' with a confident handshake that matches their grip strength."
+        },
+        {
+          "id": "appropriate_gestures",
+          "type": "do",
+          "title": "Use purposeful hand gestures",
+          "description": "Natural hand movements can emphasize points, but keep gestures controlled and purposeful.",
+          "example": "When explaining a process, use your hands to show progression or size. When making three points, count them on your fingers."
+        },
+        {
+          "id": "avoid_fidgeting",
+          "type": "dont",
+          "title": "Don't fidget or display nervous habits",
+          "description": "Avoid pen clicking, leg bouncing, hair touching, or other repetitive movements that can be distracting.",
+          "example": "Keep your hands occupied by holding a portfolio or resting them calmly. If you tend to fidget, practice sitting still during mock interviews."
+        },
+        {
+          "id": "avoid_closed_posture",
+          "type": "dont",
+          "title": "Don't adopt closed or defensive postures",
+          "description": "Avoid crossing arms, leaning away, or turning your body away from the interviewer. These signal discomfort or disengagement.",
+          "example": "Instead of crossing arms when thinking, place one hand on your chin or keep both hands visible and relaxed."
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "title": "Interview Preparation & Research",
+      "icon": "📚",
+      "description": "Set yourself up for success with thorough preparation strategies",
+      "tips": [
+        {
+          "id": "research_company",
+          "type": "do",
+          "title": "Research the company thoroughly",
+          "description": "Study the company's mission, recent news, products, culture, and the specific team you'd be joining.",
+          "example": "Read their latest blog posts, annual reports, recent press releases, and employee reviews on Glassdoor. Follow their LinkedIn and social media."
+        },
+        {
+          "id": "prepare_questions",
+          "type": "do",
+          "title": "Prepare thoughtful questions to ask",
+          "description": "Have 5-7 specific questions ready about the role, team, company culture, growth opportunities, and challenges.",
+          "example": "'What does success look like in this role after the first 90 days?' 'What are the biggest technical challenges the team is facing?' 'How does the company support professional development?'"
+        },
+        {
+          "id": "practice_common_questions",
+          "type": "do",
+          "title": "Practice answers to common questions",
+          "description": "Rehearse responses to standard questions, but don't memorize scripts. Practice until your answers flow naturally.",
+          "example": "Practice: 'Tell me about yourself,' 'Why do you want this job?' 'What's your greatest weakness?' 'Where do you see yourself in 5 years?'"
+        },
+        {
+          "id": "avoid_winging_it",
+          "type": "dont",
+          "title": "Don't wing it without preparation",
+          "description": "Even if you're highly qualified, lack of preparation shows and can cost you the opportunity.",
+          "example": "Don't assume you can 'figure it out' during the interview. Spend at least 2-3 hours researching and preparing beforehand."
+        },
+        {
+          "id": "avoid_generic_questions",
+          "type": "dont",
+          "title": "Don't ask generic or easily googled questions",
+          "description": "Avoid questions about basic company info that's readily available online. This shows you didn't do your homework.",
+          "example": "Don't ask 'What does your company do?' or 'How big is your team?' Instead, ask about specific challenges or growth plans."
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-27",
+    "totalTips": 25,
+    "totalCategories": 5
+  }
+}
