@@ -28,6 +28,9 @@ function handleTextareaBlur() {
 function loadExampleJob(jobType) {
   const textarea = document.getElementById('jobDescription');
   if (!textarea) return;
+
+  // Track example usage - ADD THIS LINE
+  window.aiCoachAnalytics?.trackExampleUsage(jobType);
   
   const examples = {
     'software-engineer': `Software Engineer - Full Stack Development

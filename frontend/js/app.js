@@ -15,6 +15,18 @@ const API_CONFIG = {
   MODEL: 'qwen/qwen3-30b-a3b:free'
 };
 
+const TokenTracker = {
+  estimateTokenCount: function(text) {
+    if (!text || typeof text !== 'string') return 0;
+    // Rough estimation: 3.5 characters per token average
+    return Math.ceil(text.length / 3.5);
+  },
+  
+  generateRequestId: function() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+  }
+};
+
 // Optimized AI System Prompt
 const SYSTEM_PROMPT = `You are an expert interview coach and hiring manager with 15+ years of experience across multiple industries. Your job is to generate personalized, realistic interview questions based on job descriptions.
 
@@ -64,6 +76,9 @@ IMPORTANT: Each question must be a complete, specific question that an interview
 async function generateQuestions() {
   console.log('[APP] Starting question generation...');
   
+  const startTime = Date.now();
+  const requestId = TokenTracker.generateRequestId(); // Generate unique request ID
+  
   try {
     // Get and validate input
     const jobDescription = getJobDescriptionInput();
@@ -71,6 +86,18 @@ async function generateQuestions() {
       return;
     }
     
+    // Calculate input tokens
+    const inputTokens = TokenTracker.estimateTokenCount(jobDescription);
+    const systemPromptTokens = TokenTracker.estimateTokenCount(SYSTEM_PROMPT);
+    const totalInputTokens = inputTokens + systemPromptTokens;
+    
+    // Track generation attempt with token info
+    window.aiCoachAnalytics?.track('generation_started', {
+      job_description_length: jobDescription.length,
+      estimated_input_tokens: totalInputTokens,
+      request_id: requestId
+    });
+
     // Update UI to loading state
     showLoadingState();
     
@@ -92,26 +119,161 @@ async function generateQuestions() {
     console.log('[APP] Making API request...', {
       model: requestPayload.model,
       jobDescriptionLength: jobDescription.length,
-      messageCount: requestPayload.messages.length
+      estimatedInputTokens: totalInputTokens,
+      requestId: requestId
     });
     
     // Make API call
     const response = await makeApiRequest(requestPayload);
+    const responseTime = Date.now() - startTime;
     
-    // Process and display results
+    // Calculate output tokens
+    const rawResponse = response.choices[0].message.content;
+    const outputTokens = TokenTracker.estimateTokenCount(rawResponse);
+    const totalTokens = totalInputTokens + outputTokens;
+    
+    // Process and analyze response quality
     const questions = parseQuestionsFromResponse(response);
+    const parsingAnalysis = analyzeResponseQuality(rawResponse, questions);
+    
+    // Display questions
     displayQuestions(questions);
+    
+    // Track successful generation with comprehensive analytics
+    window.aiCoachAnalytics?.trackQuestionGeneration(true, {
+      jobDescriptionLength: jobDescription.length,
+      questionCount: questions.length,
+      responseTime: responseTime,
+      // Token tracking
+      inputTokens: totalInputTokens,
+      outputTokens: outputTokens,
+      totalTokens: totalTokens,
+      // Parsing analytics
+      parsingSuccessful: parsingAnalysis.parsingSuccessful,
+      qualityScore: parsingAnalysis.qualityScore,
+      malformedQuestions: parsingAnalysis.malformedQuestions,
+      // Request info
+      requestId: requestId,
+      model: API_CONFIG.MODEL,
+      rawResponseLength: rawResponse.length
+    });
     
     console.log('[APP] Questions generated successfully:', {
       questionCount: questions.length,
-      totalLength: questions.reduce((sum, q) => sum + q.question.length + q.answer.length, 0)
+      responseTime: responseTime,
+      tokensUsed: totalTokens,
+      qualityScore: parsingAnalysis.qualityScore,
+      parsingSuccess: parsingAnalysis.parsingSuccessful
     });
     
   } catch (error) {
     console.error('[APP] Error generating questions:', error);
+    
+    const responseTime = Date.now() - startTime;
+    const inputTokens = jobDescription ? TokenTracker.estimateTokenCount(jobDescription) + TokenTracker.estimateTokenCount(SYSTEM_PROMPT) : 0;
+    
+    // Track failed generation with available data
+    window.aiCoachAnalytics?.trackQuestionGeneration(false, {
+      jobDescriptionLength: jobDescription?.length || 0,
+      responseTime: responseTime,
+      error: error.message,
+      // Token info (even for failures)
+      inputTokens: inputTokens,
+      outputTokens: 0,
+      totalTokens: inputTokens,
+      // Parsing info (failed)
+      parsingSuccessful: false,
+      qualityScore: 0,
+      // Request info
+      requestId: requestId,
+      model: API_CONFIG.MODEL
+    });
+
     showErrorState(error);
   }
 }
+
+
+// Add new response quality analysis function
+function analyzeResponseQuality(rawResponse, parsedQuestions) {
+  const analysis = {
+    parsingSuccessful: parsedQuestions.length > 0,
+    rawResponseLength: rawResponse.length,
+    questionsFound: parsedQuestions.length,
+    questionsWithAnswers: 0,
+    malformedQuestions: 0,
+    qualityScore: 0,
+    parsingErrors: [],
+    warningFlags: [],
+    hasProperFormat: false,
+    hasQuestionMarkers: false,
+    hasAnswerSections: false
+  };
+  
+  // Check for proper formatting markers
+  analysis.hasQuestionMarkers = /\*\*Question \d+:/i.test(rawResponse);
+  analysis.hasAnswerSections = /\*\*Example Answer:/i.test(rawResponse);
+  analysis.hasProperFormat = analysis.hasQuestionMarkers && analysis.hasAnswerSections;
+  
+  // Analyze parsed questions
+  parsedQuestions.forEach((q, index) => {
+    if (q.question && q.answer) {
+      analysis.questionsWithAnswers++;
+      
+      // Check for quality issues
+      if (q.question.length < 20) {
+        analysis.parsingErrors.push(`Question ${index + 1} too short`);
+        analysis.malformedQuestions++;
+      }
+      
+      if (q.answer.length < 100) {
+        analysis.warningFlags.push(`Answer ${index + 1} may be too brief`);
+      }
+      
+      // Check if question is just a category label
+      const categoryOnlyPattern = /^(behavioral|technical|situational|cultural fit)$/i;
+      if (categoryOnlyPattern.test(q.question.trim())) {
+        analysis.parsingErrors.push(`Question ${index + 1} is category label, not actual question`);
+        analysis.malformedQuestions++;
+      }
+    } else {
+      analysis.malformedQuestions++;
+      analysis.parsingErrors.push(`Question ${index + 1} missing question or answer`);
+    }
+  });
+  
+  // Calculate quality score (0-100)
+  let score = 0;
+  
+  // Base score for having questions
+  if (analysis.questionsFound > 0) score += 30;
+  
+  // Score for proper formatting
+  if (analysis.hasProperFormat) score += 20;
+  
+  // Score for complete questions
+  const completionRate = analysis.questionsFound > 0 ? 
+    (analysis.questionsWithAnswers / analysis.questionsFound) : 0;
+  score += completionRate * 30;
+  
+  // Penalty for malformed questions
+  const errorRate = analysis.questionsFound > 0 ? 
+    (analysis.malformedQuestions / analysis.questionsFound) : 0;
+  score -= errorRate * 20;
+  
+  // Bonus for good quantity (5-7 questions is ideal)
+  if (analysis.questionsFound >= 5 && analysis.questionsFound <= 7) {
+    score += 10;
+  }
+  
+  // Bonus for no errors
+  if (analysis.parsingErrors.length === 0) score += 10;
+  
+  analysis.qualityScore = Math.max(0, Math.min(100, Math.round(score)));
+  
+  return analysis;
+}
+
 
 // ==========================================
 // Input Validation & Processing
@@ -316,6 +478,13 @@ function showLoadingState() {
  * @param {Error} error - Error object
  */
 function showErrorState(error) {
+
+  // Track error - ADD THIS
+  window.aiCoachAnalytics?.trackError(error, {
+    context: 'question_generation',
+    user_action: 'generate_questions'
+  });
+  
   const output = document.getElementById('output');
   const generateBtn = document.querySelector('.generate-btn');
   
@@ -463,6 +632,11 @@ async function copyAllQuestions() {
     showNotification('No questions to copy', 'error');
     return;
   }
+
+  // Track copy action - ADD THIS
+  window.aiCoachAnalytics?.trackCopyAction('all_questions', {
+    totalQuestions: questions.length
+  });
   
   const text = questions.map((q, index) => 
     `Question ${index + 1}: ${q.question}\n\nExample Answer:\n${q.answer}\n\n${'='.repeat(50)}\n`
@@ -495,6 +669,16 @@ async function copyQuestionAndAnswer(questionId) {
   
   try {
     await navigator.clipboard.writeText(text);
+
+    // Track single Q&A copy - ADD THIS
+    const questionNumber = parseInt(questionId.replace('q', ''));
+    const totalQuestions = document.querySelectorAll('.question-card').length;
+    
+    window.aiCoachAnalytics?.trackCopyAction('single_qa', {
+      questionNumber: questionNumber,
+      totalQuestions: totalQuestions
+    });
+
     showNotification('Question and answer copied!');
   } catch (error) {
     console.error('[APP] Copy failed:', error);
