@@ -14,39 +14,171 @@
 </head>
 <body>
 
+  <!-- Header with Navigation -->
   <header>
-    <h1>🎯 AI Interview Coach</h1>
-    <p class="subtitle">Get customized interview questions based on any job description</p>
+    <nav class="header-navbar">
+      <!-- Brand -->
+      <a href="index.html" class="header-brand">
+        <span class="brand-icon">🎯</span>
+        <div class="brand-text">
+          <h1>AI Interview Coach</h1>
+          <p class="subtitle">Smart interview preparation</p>
+        </div>
+      </a>
+      
+      <!-- Main Navigation -->
+      <div class="main-nav" id="mainNav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">
+              <span class="nav-icon">🎯</span>
+              Question Generator
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tips.html" class="nav-link">
+              <span class="nav-icon">💡</span>
+              Interview Tips
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link coming-soon">
+              <span class="nav-icon">📝</span>
+              Resume Analysis
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link coming-soon">
+              <span class="nav-icon">🎤</span>
+              Practice Mode
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        ☰
+      </button>
+    </nav>
   </header>
 
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h2 class="hero-title">Get customized interview questions</h2>
+      <p class="hero-subtitle">Paste any job description and get tailored interview questions with expert example answers</p>
+    </div>
+  </div>
+
   <div class="container">
+    <!-- Enhanced Input Section -->
     <div class="input-section">
-      <label for="jobDescription">📋 <strong>Paste Job Description:</strong></label>
+      <!-- Input Header -->
+      <div class="input-header">
+        <h2 class="input-title">
+          <span>📋</span>
+          Paste Your Job Description
+        </h2>
+        <p class="input-subtitle">
+          Add any job posting and get personalized interview questions with expert example answers in seconds
+        </p>
+        
+        <!-- Process Steps -->
+        <div class="input-steps">
+          <div class="input-step">
+            <div class="step-number">1</div>
+            <span>Paste job description</span>
+          </div>
+          <div class="input-step">
+            <div class="step-number">2</div>
+            <span>Click generate</span>
+          </div>
+          <div class="input-step">
+            <div class="step-number">3</div>
+            <span>Get tailored questions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Textarea -->
       <div class="textarea-container">
-        <textarea 
-          id="jobDescription" 
-          placeholder="Paste the job description here and I'll generate tailored interview questions with example answers to help you prepare..."
-          oninput="updateCharacterCount()"
-        ></textarea>
+        <div class="textarea-wrapper" id="textareaWrapper">
+          <textarea 
+            id="jobDescription" 
+            placeholder="Paste your job description here...
+
+For example:
+• Software Engineer at Google
+• Marketing Manager role requirements  
+• Sales Associate job posting
+• Any job description from LinkedIn, Indeed, or company websites
+
+The more details you provide, the better your personalized questions will be!"
+            oninput="updateCharacterCount()"
+            onfocus="handleTextareaFocus()"
+            onblur="handleTextareaBlur()"
+          ></textarea>
+        </div>
+        
+        <!-- Enhanced Character Counter -->
         <div class="character-counter">
           <div class="char-count-section">
-            <span id="charCount">0</span> / <span id="charLimit">10,000</span> characters
+            <div class="char-count-display">
+              <span id="charCount">0</span>
+              <span class="char-divider">/</span>
+              <span id="charLimit">10,000</span>
+              <span>characters</span>
+            </div>
           </div>
           <span id="charStatus" class="char-status"></span>
         </div>
         <div id="charWarning" class="char-warning" style="display: none;"></div>
       </div>
+
+      <!-- Enhanced Generate Button -->
       <button class="generate-btn" onclick="generateQuestions()">
-        ✨ Generate Questions
+        <span class="btn-icon">✨</span>
+        <span>Generate Interview Questions</span>
       </button>
+
+      <!-- Example Job Descriptions -->
+      <div class="example-jobs">
+        <div class="example-jobs-title">
+          <span>💡</span>
+          Try these examples:
+        </div>
+        <div class="example-jobs-list">
+          <button class="example-job-btn" onclick="loadExampleJob('software-engineer')">Software Engineer</button>
+          <button class="example-job-btn" onclick="loadExampleJob('product-manager')">Product Manager</button>
+          <button class="example-job-btn" onclick="loadExampleJob('data-scientist')">Data Scientist</button>
+          <button class="example-job-btn" onclick="loadExampleJob('marketing-manager')">Marketing Manager</button>
+          <button class="example-job-btn" onclick="loadExampleJob('sales-rep')">Sales Representative</button>
+        </div>
+      </div>
     </div>
 
     <div id="output">Your interview questions will appear here.</div>
+    
+    <!-- Tips Callout -->
+    <div class="tips-callout">
+      <div class="tips-callout-content">
+        <div class="tips-callout-text">
+          <h3>💡 Need interview tips and strategies?</h3>
+          <p>Master your interview with our comprehensive guide covering communication, technical questions, behavioral interviews, body language, and preparation strategies.</p>
+        </div>
+        <a href="tips.html" class="tips-callout-btn">
+          <span>View Interview Tips</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript Files -->
   <script src="js/character-counter.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
 
 </body>
 </html>
