@@ -1,0 +1,268 @@
+/* ==========================================
+   AI Interview Coach - Tips Table Styles
+   ========================================== */
+
+/* Tips Table Container */
+.tips-table-container {
+  margin-bottom: 40px;
+}
+
+.table-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.table-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.table-header p {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Table Wrapper for Responsive Scrolling */
+.tips-table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* Main Tips Table */
+.tips-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  background: white;
+}
+
+/* Table Header */
+.tips-table thead {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  color: white;
+}
+
+.tips-table th {
+  padding: 20px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dont-column {
+  width: 35%;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.do-column {
+  width: 65%;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+/* Table Body */
+.tips-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.tips-table tbody tr:hover {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tips-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Table Cells */
+.tips-table td {
+  padding: 20px 16px;
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 1.6;
+  border: none;
+}
+
+/* Don't Column Styling */
+.dont-cell {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 50%, #fee2e2 100%);
+  color: #991b1b;
+  font-weight: 600;
+  border-left: 4px solid #dc2626;
+}
+
+/* Do Column Styling */
+.do-cell {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%, #d1fae5 100%);
+  color: #065f46;
+  font-weight: 500;
+  border-left: 4px solid #059669;
+}
+
+/* Print Section */
+.print-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  margin-top: 40px;
+}
+
+.print-btn {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.print-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.print-note {
+  margin-top: 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 60px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .table-header h2 {
+    font-size: 24px;
+  }
+  
+  .table-header p {
+    font-size: 16px;
+  }
+  
+  .tips-table th {
+    padding: 16px 12px;
+    font-size: 16px;
+  }
+  
+  .tips-table td {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+  
+  .dont-column {
+    width: 40%;
+  }
+  
+  .do-column {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .tips-table-wrapper {
+    border-radius: 12px;
+  }
+  
+  .tips-table th {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+  
+  .tips-table td {
+    padding: 12px 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  header,
+  footer,
+  .print-section {
+    display: none !important;
+  }
+  
+  .container {
+    background: white !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  
+  .tips-table-wrapper {
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .tips-table th {
+    background: #f0f0f0 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .dont-cell {
+    background: #ffe6e6 !important;
+    color: #8b0000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .do-cell {
+    background: #e6ffe6 !important;
+    color: #006400 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .tips-table tbody tr:hover {
+    background: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
