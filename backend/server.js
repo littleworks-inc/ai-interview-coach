@@ -22,6 +22,11 @@ const { RATE_LIMITS, HTTP_STATUS } = require('./utils/constants');
 
 const tipsRouter = require('./routes/tips');
 
+// Add this import at the top with other route imports
+const analyticsRouter = require('./routes/analytics');
+
+const adminRouter = require('./routes/admin');
+
 // Setup global error handlers
 setupGlobalErrorHandlers();
 
@@ -155,6 +160,12 @@ app.get('/', (req, res) => {
 
 // Tips endpoints - NEW ADDITION
 app.use('/api/tips', tipsRouter);
+
+// Analytics endpoints - NEW
+app.use('/api/analytics', analyticsRouter);
+
+// Admin dashboard
+app.use('/admin', adminRouter);
 
 // Main AI generation endpoint with full security stack
 app.post('/api/generate', 
