@@ -1,0 +1,362 @@
+/* ==========================================
+   AI Interview Coach - Validation Styles
+   ========================================== */
+
+/* Validation Feedback Container */
+.validation-feedback {
+  margin-top: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.validation-feedback.has-errors {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+.validation-feedback.has-warnings {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+}
+
+/* Feedback Sections */
+.feedback-section {
+  margin-bottom: 12px;
+}
+
+.feedback-section:last-child {
+  margin-bottom: 0;
+}
+
+.feedback-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.feedback-icon {
+  font-size: 14px;
+}
+
+.feedback-title {
+  text-transform: capitalize;
+}
+
+.feedback-errors .feedback-header {
+  color: #dc2626;
+}
+
+.feedback-warnings .feedback-header {
+  color: #d97706;
+}
+
+.feedback-suggestions .feedback-header {
+  color: #059669;
+}
+
+/* Feedback Lists */
+.feedback-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.feedback-list li {
+  position: relative;
+  margin-bottom: 4px;
+  padding-left: 12px;
+}
+
+.feedback-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #6b7280;
+}
+
+.feedback-errors .feedback-list li::before {
+  content: '×';
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.feedback-warnings .feedback-list li::before {
+  content: '!';
+  color: #d97706;
+  font-weight: bold;
+}
+
+.feedback-suggestions .feedback-list li::before {
+  content: '→';
+  color: #059669;
+}
+
+/* Quality Score Display */
+.quality-score {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.score-label {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.score-value {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.score-value.score-good {
+  color: #059669;
+}
+
+.score-value.score-fair {
+  color: #d97706;
+}
+
+.score-value.score-poor {
+  color: #dc2626;
+}
+
+.score-text {
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Generate Button Validation States */
+.generate-btn.validation-blocked {
+  position: relative;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.generate-btn.validation-blocked::after {
+  content: '⚠️';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #f59e0b;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  animation: pulse-warning 2s infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 0.8; 
+  }
+}
+
+/* Validation Modal */
+.validation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.validation-modal.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  width: 32px;
+  height: 32px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border-radius: 50%;
+ transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+ background: #f3f4f6;
+ color: #374151;
+}
+
+.modal-body {
+ padding: 20px 24px;
+}
+
+.modal-body p {
+ margin: 0 0 16px 0;
+ color: #374151;
+ line-height: 1.6;
+}
+
+.modal-body ul {
+ margin: 0;
+ padding-left: 20px;
+ color: #dc2626;
+}
+
+.modal-body li {
+ margin-bottom: 8px;
+ line-height: 1.5;
+}
+
+.modal-footer {
+ padding: 16px 24px;
+ border-top: 1px solid #e2e8f0;
+ text-align: right;
+}
+
+.modal-btn {
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ color: white;
+ border: none;
+ padding: 12px 24px;
+ border-radius: 8px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+ transform: translateY(-1px);
+ box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Textarea Validation States */
+.textarea-wrapper.validation-error {
+ border-color: #ef4444;
+ box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.textarea-wrapper.validation-warning {
+ border-color: #f59e0b;
+ box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.textarea-wrapper.validation-success {
+ border-color: #10b981;
+ box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+ .validation-feedback {
+   padding: 12px;
+   font-size: 13px;
+ }
+ 
+ .feedback-header {
+   font-size: 13px;
+ }
+ 
+ .feedback-list {
+   padding-left: 16px;
+ }
+ 
+ .score-container {
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 4px;
+ }
+ 
+ .modal-content {
+   width: 95%;
+   margin: 20px;
+ }
+ 
+ .modal-header,
+ .modal-body,
+ .modal-footer {
+   padding: 16px 20px;
+ }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+ .generate-btn.validation-blocked::after {
+   animation: none;
+ }
+ 
+ .validation-modal {
+   transition: none;
+ }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+ .validation-feedback.has-errors {
+   border-color: #000;
+   background: #fff;
+ }
+ 
+ .validation-feedback.has-warnings {
+   border-color: #000;
+   background: #fff;
+ }
+ 
+ .feedback-errors .feedback-header {
+   color: #000;
+ }
+ 
+ .feedback-warnings .feedback-header {
+   color: #000;
+ }
+}
