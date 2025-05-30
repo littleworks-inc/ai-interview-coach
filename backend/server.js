@@ -11,7 +11,7 @@ const rateLimit = require('express-rate-limit');
 
 // Import our custom middleware
 const { sanitizeRequestBody } = require('./middleware/sanitization');
-const { validateGenerateRequest } = require('./middleware/validation');
+const { enhancedValidateGenerateRequest } = require('./middleware/enhanced-validation');
 const { 
   errorHandler, 
   notFoundHandler, 
@@ -27,6 +27,9 @@ const analyticsRouter = require('./routes/analytics');
 
 const adminRouter = require('./routes/admin');
 
+// Add this import at the top with other route imports
+const validationRouter = require('./routes/validation');
+
 // Setup global error handlers
 setupGlobalErrorHandlers();
 
@@ -36,6 +39,9 @@ const PORT = process.env.PORT || 3000;
 // ==========================================
 // Security Middleware (Applied First)
 // ==========================================
+
+// Add this route before the main generate endpoint
+app.use('/api/validate', validationRouter);
 
 // Helmet for security headers
 app.use(helmet({
@@ -171,20 +177,45 @@ app.use('/admin', adminRouter);
 app.post('/api/generate', 
   aiLimiter,                    // Apply strict rate limiting
   sanitizeRequestBody,          // Sanitize input
-  validateGenerateRequest,      // Validate request
+  enhancedValidateGenerateRequest,      // Validate request
   asyncErrorHandler(async (req, res) => {
     try {
       // Use sanitized body for the API call
       const { model, messages } = req.sanitizedBody;
+      // NEW: Access validated content and quality scores
+      const contentQuality = req.contentQuality;
+      const hasResumeSummary = contentQuality?.hasResumeSummary || false;
       
       console.log('[API REQUEST]', {
         timestamp: new Date().toISOString(),
         ip: req.ip,
         model: model,
         messageCount: messages.length,
-        jobDescriptionLength: req.validatedJobDescription?.length || 0
+        jobDescriptionLength: req.validatedJobDescription?.length || 0,
+        resumeSummaryLength: req.validatedResumeSummary?.length || 0,
+        contentQuality: contentQuality,
+        hasResumeSummary: hasResumeSummary
       });
       
+      // NEW: Enhanced AI prompt based on content quality and resume summary
+      let enhancedMessages = [...messages];
+      
+      // If we have a resume summary, enhance the system prompt
+      if (hasResumeSummary && req.validatedResumeSummary) {
+        const systemMessage = enhancedMessages.find(msg => msg.role === 'system');
+        if (systemMessage) {
+          systemMessage.content += `\n\nIMPORTANT: The candidate has provided their background summary: "${req.validatedResumeSummary}"\n\nUse this information to:\n1. Tailor questions to their experience level\n2. Generate realistic answers that match their background\n3. Focus on areas relevant to their skills and experience\n4. Ensure answers don't over-qualify or under-qualify them`;
+        }
+      }
+      
+      // If content quality is low, add guidance to the system prompt
+      if (contentQuality?.jobQuality < 40) {
+        const systemMessage = enhancedMessages.find(msg => msg.role === 'system');
+        if (systemMessage) {
+          systemMessage.content += `\n\nNOTE: The job description provided has limited detail. Focus on generating general but professional interview questions that would be appropriate for most roles in this field.`;
+        }
+      }
+
       // Make request to OpenRouter API
       const response = await axios.post(
         'https://openrouter.ai/api/v1/chat/completions',

@@ -65,6 +65,33 @@ const ERROR_MESSAGES = {
   MISSING_JOB_DESCRIPTION: 'Job description is required.',
   JOB_DESCRIPTION_TOO_SHORT: `Job description must be at least ${VALIDATION_LIMITS.JOB_DESCRIPTION.MIN_LENGTH} characters.`,
   JOB_DESCRIPTION_TOO_LONG: `Job description is too long. Please keep it under ${VALIDATION_LIMITS.JOB_DESCRIPTION.MAX_LENGTH} characters.`,
+
+  // NEW: Enhanced content validation messages
+  CONTENT_INAPPROPRIATE: 'Content contains inappropriate language or patterns. Please use professional language only.',
+  NOT_JOB_DESCRIPTION: 'The content provided does not appear to be a job description. Please paste a real job posting.',
+  CONTENT_LOW_QUALITY: 'Content quality is too low to generate meaningful interview questions. Please provide more detailed information.',
+  RESUME_SUMMARY_TOO_LONG: 'Resume summary is too long. Please keep it under 800 characters for optimal results.',
+
+  // Resume Summary Specific Error Messages
+  RESUME_SUMMARY_INVALID_FORMAT: 'Resume summary must be a valid text string',
+  RESUME_SUMMARY_TOO_LONG: 'Resume summary exceeds 800 characters. Keep it concise for ATS compatibility.',
+  RESUME_SUMMARY_INAPPROPRIATE: 'Resume summary contains inappropriate language. Please use professional language only.',
+  RESUME_SUMMARY_PERSONAL_INFO: 'Resume summary should not include personal information (age, marital status, etc.). Focus on professional experience only.',
+  RESUME_SUMMARY_NOT_PROFESSIONAL: 'Resume summary does not appear to describe professional experience. Include work experience, skills, and achievements.',
+  RESUME_SUMMARY_TOO_GENERIC: 'Resume summary is too generic. Include specific achievements, technologies, and quantifiable results.',
+  RESUME_SUMMARY_MISSING_EXPERIENCE: 'Resume summary should include your years of experience or career level.',
+  RESUME_SUMMARY_MISSING_ACHIEVEMENTS: 'Consider adding specific achievements with numbers or percentages to make your summary more impactful.',
+  RESUME_SUMMARY_UNPROFESSIONAL_LANGUAGE: 'Resume summary contains unprofessional language. Use formal, business-appropriate terminology.',
+  RESUME_SUMMARY_THIRD_PERSON: 'Resume summary should be written in first person (use "I" or implied first person style).',
+  
+  // Content Compatibility Messages
+  CONTENT_MISMATCH_EXPERIENCE_LEVEL: 'Your experience level may not match the job requirements. Consider highlighting transferable skills.',
+  CONTENT_MISMATCH_INDUSTRY: 'Your background appears to be in a different industry. Emphasize relevant transferable skills and experience.',
+  
+  // Quality Enhancement Messages
+  CONTENT_QUALITY_LOW_COMBINED: 'Both job description and resume summary could be more detailed for better interview preparation.',
+  PERSONALIZATION_OPPORTUNITY: 'Add a more detailed resume summary to get highly personalized interview questions.',
+  
   
   // Security errors
   INVALID_CONTENT: 'The content contains invalid characters or patterns. Please remove any special formatting and try again.',
@@ -105,11 +132,21 @@ const RATE_LIMITS = {
   }
 };
 
+// Add resume-specific validation limits
+const RESUME_VALIDATION = {
+  MIN_LENGTH: 20,
+  MAX_LENGTH: 800,
+  OPTIMAL_LENGTH: 400,
+  MIN_PROFESSIONAL_WORDS: 5,
+  RECOMMENDED_SENTENCES: 3
+};
+
 module.exports = {
   VALIDATION_LIMITS,
+  RESUME_VALIDATION, // NEW
   ALLOWED_MODELS,
   SECURITY_PATTERNS,
-  ERROR_MESSAGES,
+  ERROR_MESSAGES, // Updated with resume messages
   HTTP_STATUS,
   RATE_LIMITS
 };
