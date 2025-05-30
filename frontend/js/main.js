@@ -253,3 +253,337 @@ Compensation Package:
     console.log(`[EXAMPLES] Loaded ${jobType} example`);
   }
 }
+
+
+/**
+ * Show resume summary section after job description is filled
+ */
+function showResumeSummarySection() {
+  const resumeSection = document.getElementById('resumeSummarySection');
+  const jobDescription = document.getElementById('jobDescription');
+  
+  if (resumeSection && jobDescription && jobDescription.value.trim().length > 50) {
+    resumeSection.style.display = 'block';
+    resumeSection.classList.add('active');
+    
+    // Smooth scroll to resume section
+    setTimeout(() => {
+      resumeSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest'
+      });
+    }, 300);
+    
+    console.log('[RESUME] Summary section shown');
+    
+    // Track section reveal
+    window.aiCoachAnalytics?.track('resume_section_shown', {
+      job_description_length: jobDescription.value.length
+    });
+  }
+}
+
+/**
+ * Hide resume summary section if job description is cleared
+ */
+function hideResumeSummarySection() {
+  const resumeSection = document.getElementById('resumeSummarySection');
+  const jobDescription = document.getElementById('jobDescription');
+  
+  if (resumeSection && jobDescription && jobDescription.value.trim().length < 50) {
+    resumeSection.style.display = 'none';
+    resumeSection.classList.remove('active');
+    
+    // Clear resume summary too
+    const resumeTextarea = document.getElementById('resumeSummary');
+    if (resumeTextarea) {
+      resumeTextarea.value = '';
+      updateResumeCharacterCount();
+    }
+    
+    console.log('[RESUME] Summary section hidden');
+  }
+}
+
+/**
+ * Load resume example based on industry and level
+ * @param {string} industry - Industry key (tech, finance, etc.)
+ * @param {string} level - Experience level (entry, mid, senior)
+ */
+function loadResumeExample(industry, level) {
+  const textarea = document.getElementById('resumeSummary');
+  if (!textarea) {
+    console.error('[RESUME] Resume textarea not found');
+    return;
+  }
+  
+  // Get example from the RESUME_EXAMPLES data
+  const example = getResumeExample(industry, level);
+  
+  if (example) {
+    textarea.value = example;
+    updateResumeCharacterCount();
+    
+    // Visual feedback
+    textarea.style.background = '#f0f9ff';
+    setTimeout(() => {
+      textarea.style.background = '';
+    }, 1000);
+    
+    // Focus textarea
+    textarea.focus();
+    
+    // Track example usage
+    window.aiCoachAnalytics?.track('resume_example_used', {
+      industry: industry,
+      level: level,
+      example_length: example.length
+    });
+    
+    console.log(`[RESUME] Loaded ${industry}-${level} example`);
+  } else {
+    console.error(`[RESUME] No example found for ${industry}-${level}`);
+    showNotification('Example not found. Please try another option.', 'error');
+  }
+}
+
+/**
+ * Update character count for resume summary
+ */
+function updateResumeCharacterCount() {
+  const textarea = document.getElementById('resumeSummary');
+  const charCount = document.getElementById('resumeCharCount');
+  const charStatus = document.getElementById('resumeCharStatus');
+  const charWarning = document.getElementById('resumeCharWarning');
+  const wrapper = document.getElementById('resumeTextareaWrapper');
+  
+  if (!textarea || !charCount || !charStatus) {
+    console.error('[RESUME] Character counter elements not found');
+    return;
+  }
+  
+  const currentLength = textarea.value.length;
+  const maxLength = 800; // ATS-friendly limit
+  const optimalLength = 500; // Sweet spot for ATS
+  
+  // Update counter display
+  charCount.textContent = currentLength.toLocaleString();
+  
+  // Remove all existing classes
+  charCount.className = '';
+  charStatus.className = 'char-status';
+  if (wrapper) {
+    wrapper.classList.remove('char-warning', 'char-danger');
+  }
+  if (charWarning) {
+    charWarning.style.display = 'none';
+    charWarning.className = 'char-warning';
+  }
+  
+  // Determine status and apply appropriate styling
+  if (currentLength === 0) {
+    charStatus.textContent = '';
+  } else if (currentLength < 100) {
+    charCount.className = 'char-warning';
+    charStatus.textContent = 'Too short - add more details';
+    charStatus.classList.add('char-warning');
+  } else if (currentLength <= optimalLength) {
+    // Optimal range (100-500 characters)
+    charCount.className = 'char-safe';
+    charStatus.textContent = '✅ Perfect length for ATS';
+    charStatus.classList.add('char-safe');
+  } else if (currentLength <= maxLength * 0.9) {
+    // Good range (500-720 characters)
+    charCount.className = 'char-safe';
+    charStatus.textContent = '✅ Good length';
+    charStatus.classList.add('char-safe');
+  } else if (currentLength <= maxLength) {
+    // Warning zone (720-800 characters)
+    charCount.className = 'char-warning';
+    charStatus.textContent = '⚠️ Getting long';
+    charStatus.classList.add('char-warning');
+    if (wrapper) wrapper.classList.add('char-warning');
+    
+    if (charWarning) {
+      const remaining = maxLength - currentLength;
+      charWarning.innerHTML = `<strong>Notice:</strong> ${remaining} characters remaining. Consider keeping it concise for ATS systems.`;
+      charWarning.style.display = 'block';
+    }
+  } else {
+    // Over limit (800+ characters)
+    charCount.className = 'char-danger';
+    charStatus.textContent = '❌ Too long for ATS';
+    charStatus.classList.add('char-danger');
+    if (wrapper) wrapper.classList.add('char-danger');
+    
+    if (charWarning) {
+      const overBy = currentLength - maxLength;
+      charWarning.innerHTML = `<strong>Warning:</strong> ${overBy} characters over ATS-friendly limit. Please shorten for better results.`;
+      charWarning.style.display = 'block';
+      charWarning.classList.add('error');
+    }
+  }
+}
+
+/**
+ * Handle resume textarea focus
+ */
+function handleResumeTextareaFocus() {
+  const wrapper = document.getElementById('resumeTextareaWrapper');
+  if (wrapper) {
+    wrapper.classList.add('focused');
+  }
+  
+  // Track engagement
+  window.aiCoachAnalytics?.track('resume_textarea_focused', {
+    current_length: document.getElementById('resumeSummary')?.value.length || 0
+  });
+}
+
+/**
+ * Handle resume textarea blur
+ */
+function handleResumeTextareaBlur() {
+  const wrapper = document.getElementById('resumeTextareaWrapper');
+  if (wrapper) {
+    wrapper.classList.remove('focused');
+  }
+  
+  // Track completion if user added content
+  const textarea = document.getElementById('resumeSummary');
+  if (textarea && textarea.value.trim().length > 0) {
+    window.aiCoachAnalytics?.track('resume_summary_completed', {
+      final_length: textarea.value.length,
+      is_ats_compliant: textarea.value.length <= 800
+    });
+  }
+}
+
+/**
+ * Get resume summary input value
+ * @returns {string} Resume summary text or empty string
+ */
+function getResumeSummary() {
+  const textarea = document.getElementById('resumeSummary');
+  return textarea ? textarea.value.trim() : '';
+}
+
+/**
+ * Enhanced job description input handler with resume section toggle
+ * Call this function when job description changes
+ */
+function handleJobDescriptionChange() {
+  const jobDescription = document.getElementById('jobDescription');
+  if (!jobDescription) return;
+  
+  const length = jobDescription.value.trim().length;
+  
+  // Show resume section when job description has enough content
+  if (length > 50) {
+    showResumeSummarySection();
+  } else {
+    hideResumeSummarySection();
+  }
+}
+
+/**
+ * Initialize resume summary functionality
+ */
+function initializeResumeSummary() {
+  const jobDescriptionTextarea = document.getElementById('jobDescription');
+  const resumeTextarea = document.getElementById('resumeSummary');
+  
+  if (jobDescriptionTextarea) {
+    // Add event listener to job description to show/hide resume section
+    jobDescriptionTextarea.addEventListener('input', handleJobDescriptionChange);
+    jobDescriptionTextarea.addEventListener('paste', () => {
+      // Handle paste events with slight delay
+      setTimeout(handleJobDescriptionChange, 100);
+    });
+  }
+  
+  if (resumeTextarea) {
+    // Initialize character count
+    updateResumeCharacterCount();
+    
+    // Add paste event listener for character count update
+    resumeTextarea.addEventListener('paste', () => {
+      setTimeout(updateResumeCharacterCount, 10);
+    });
+  }
+  
+  console.log('[RESUME] Summary functionality initialized');
+}
+
+/**
+ * Clear resume summary
+ */
+function clearResumeSummary() {
+  const textarea = document.getElementById('resumeSummary');
+  if (textarea) {
+    textarea.value = '';
+    updateResumeCharacterCount();
+    
+    // Track clearing
+    window.aiCoachAnalytics?.track('resume_summary_cleared');
+    
+    console.log('[RESUME] Summary cleared');
+  }
+}
+
+/**
+ * Validate resume summary for ATS compliance
+ * @returns {object} Validation result with recommendations
+ */
+function validateResumeSummary() {
+  const summary = getResumeSummary();
+  const validation = {
+    isValid: true,
+    warnings: [],
+    recommendations: [],
+    atsScore: 100
+  };
+  
+  if (summary.length === 0) {
+    validation.warnings.push('No resume summary provided');
+    validation.recommendations.push('Add a brief professional summary for better personalization');
+    return validation;
+  }
+  
+  // Length validation
+  if (summary.length < 100) {
+    validation.warnings.push('Summary is very short');
+    validation.recommendations.push('Add more details about your experience and achievements');
+    validation.atsScore -= 20;
+  } else if (summary.length > 800) {
+    validation.isValid = false;
+    validation.warnings.push('Summary exceeds ATS-friendly length');
+    validation.recommendations.push('Shorten to under 800 characters for better ATS compatibility');
+    validation.atsScore -= 30;
+  }
+  
+  // Content validation
+  const hasNumbers = /\d/.test(summary);
+  const hasExperience = /\b(\d+\s*(year|yr|month|experience|exp))/i.test(summary);
+  const hasSkills = summary.length > 200; // Assume longer summaries have more skills
+  
+  if (!hasNumbers) {
+    validation.recommendations.push('Consider adding quantifiable achievements (numbers, percentages)');
+    validation.atsScore -= 10;
+  }
+  
+  if (!hasExperience) {
+    validation.recommendations.push('Mention your years of experience or career level');
+    validation.atsScore -= 15;
+  }
+  
+  return validation;
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeResumeSummary);
+} else {
+  initializeResumeSummary();
+}

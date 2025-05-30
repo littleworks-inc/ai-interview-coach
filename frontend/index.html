@@ -92,7 +92,7 @@
           </div>
           <div class="input-step">
             <div class="step-number">2</div>
-            <span>Click generate</span>
+            <span>Add your background</span>
           </div>
           <div class="input-step">
             <div class="step-number">3</div>
@@ -136,12 +136,6 @@ The more details you provide, the better your personalized questions will be!"
         <div id="charWarning" class="char-warning" style="display: none;"></div>
       </div>
 
-      <!-- Enhanced Generate Button -->
-      <button class="generate-btn" onclick="generateQuestions()">
-        <span class="btn-icon">✨</span>
-        <span>Generate Interview Questions</span>
-      </button>
-
       <!-- Example Job Descriptions -->
       <div class="example-jobs">
         <div class="example-jobs-title">
@@ -156,6 +150,104 @@ The more details you provide, the better your personalized questions will be!"
           <button class="example-job-btn" onclick="loadExampleJob('sales-rep')">Sales Representative</button>
         </div>
       </div>
+    </div>
+
+    <!-- Resume Summary Section -->
+    <div class="input-section resume-summary-section" id="resumeSummarySection" style="display: none;">
+      <!-- Section Header -->
+      <div class="input-header">
+        <h2 class="input-title">
+          <span>👤</span>
+          Add Your Background (Optional)
+        </h2>
+        <p class="input-subtitle">
+          Help us personalize your interview questions by sharing a brief summary of your experience, skills, and achievements
+        </p>
+        
+        <!-- Benefits Callout -->
+        <div class="benefits-callout">
+          <div class="benefit-item">
+            <span class="benefit-icon">🎯</span>
+            <span>More targeted questions</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">📈</span>
+            <span>Experience-appropriate answers</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">⚡</span>
+            <span>Better preparation tips</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resume Summary Textarea -->
+      <div class="textarea-container">
+        <div class="textarea-wrapper" id="resumeTextareaWrapper">
+          <textarea 
+            id="resumeSummary" 
+            placeholder="Write a brief professional summary about yourself...
+
+Example format:
+• Years of experience and industry
+• Key skills and technologies 
+• Major achievements with numbers
+• Career goals or focus areas
+
+Keep it concise (3-4 sentences, under 800 characters)"
+            oninput="updateResumeCharacterCount()"
+            onfocus="handleResumeTextareaFocus()"
+            onblur="handleResumeTextareaBlur()"
+            maxlength="800"
+          ></textarea>
+        </div>
+        
+        <!-- Character Counter -->
+        <div class="character-counter">
+          <div class="char-count-section">
+            <div class="char-count-display">
+              <span id="resumeCharCount">0</span>
+              <span class="char-divider">/</span>
+              <span id="resumeCharLimit">800</span>
+              <span>characters</span>
+            </div>
+          </div>
+          <span id="resumeCharStatus" class="char-status"></span>
+        </div>
+        <div id="resumeCharWarning" class="char-warning" style="display: none;"></div>
+      </div>
+
+      <!-- Example Resume Summaries -->
+      <!-- Example Resume Summaries - SIMPLIFIED VERSION -->
+      <div class="example-resumes">
+        <div class="example-resumes-title">
+          <span>💡</span>
+          Try these examples:
+        </div>
+        <div class="example-resumes-list">
+          <button class="resume-example-btn" onclick="loadResumeExample('tech', 'entry')">Tech - Entry Level</button>
+          <button class="resume-example-btn" onclick="loadResumeExample('tech', 'mid')">Tech - Mid Level</button>
+          <button class="resume-example-btn" onclick="loadResumeExample('finance', 'mid')">Finance Professional</button>
+          <button class="resume-example-btn" onclick="loadResumeExample('marketing', 'entry')">Marketing Specialist</button>
+          <button class="resume-example-btn" onclick="loadResumeExample('sales', 'mid')">Sales Representative</button>
+          <button class="resume-example-btn" onclick="loadResumeExample('healthcare', 'mid')">Healthcare Professional</button>
+        </div>
+      </div>
+
+      <!-- Skip Option -->
+      <div class="skip-section">
+        <p class="skip-text">
+          <strong>Don't want to add your background?</strong> No problem! We'll create questions based on the job description only.
+        </p>
+      </div>
+    </div>
+
+    <!-- Enhanced Generate Button -->
+    <div class="generate-section">
+      <button class="generate-btn" onclick="generateQuestions()">
+        <span class="btn-icon">✨</span>
+        <span>Generate Interview Questions</span>
+      </button>
     </div>
 
     <div id="output">Your interview questions will appear here.</div>
@@ -178,6 +270,7 @@ The more details you provide, the better your personalized questions will be!"
   <!-- JavaScript Files -->
   <script src="js/analytics.js"></script>
   <script src="js/character-counter.js"></script>
+  <script src="js/resume-examples.js"></script>
   <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/app.js"></script> 
