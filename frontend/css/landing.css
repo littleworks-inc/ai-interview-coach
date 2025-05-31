@@ -1246,3 +1246,28 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.landing-navbar .nav-link {
+  color: #333333 !important;
+}
+
+.landing-navbar .nav-link:hover {
+  color: #007BFF !important;
+}
+
+.landing-navbar .header-brand {
+  color: #333333 !important;
+}
+
+.landing-navbar .brand-text h1 {
+  color: #333333 !important;
+}
+
+.landing-navbar .brand-text .subtitle {
+  color: #666666 !important;
+}
+
+.landing-navbar .mobile-menu-toggle {
+  color: #333333 !important;
+}

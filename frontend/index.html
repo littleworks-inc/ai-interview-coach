@@ -21,15 +21,17 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- CSS Files -->
+  <!-- CSS Files - ORDER MATTERS -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/unified-navigation.css">
+  <link rel="stylesheet" href="css/unified-backgrounds.css">
 </head>
 <body class="landing-page">
 
-  <!-- Header with Navigation -->
-  <header class="landing-header">
-    <nav class="landing-navbar">
+  <!-- UNIFIED HEADER -->
+  <header class="unified-header">
+    <nav class="unified-navbar">
       <!-- Brand -->
       <a href="index.html" class="header-brand">
         <span class="brand-icon">🎯</span>
@@ -39,16 +41,41 @@
         </div>
       </a>
       
-      <!-- Navigation -->
-      <div class="nav-links">
-        <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="tips.html" class="nav-link">Tips</a>
-        <a href="app.html" class="nav-link cta-nav">Get Started</a>
+      <!-- Main Navigation -->
+      <div class="main-nav" id="mainNav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="app.html" class="nav-link" data-page="app">
+              <span class="nav-icon">🎯</span>
+              Question Generator
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tips.html" class="nav-link" data-page="tips">
+              <span class="nav-icon">💡</span>
+              Tips
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#features" class="nav-link" data-page="features">
+              Features
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#how-it-works" class="nav-link" data-page="how-it-works">
+              How It Works
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="app.html" class="nav-link cta-nav">
+              Get Started
+            </a>
+          </li>
+        </ul>
       </div>
       
       <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
         ☰
       </button>
     </nav>
@@ -284,7 +311,7 @@
     </div>
   </section>
 
-  <!-- Final CTA Section - Clean Class-Based Implementation -->
+  <!-- Final CTA Section -->
   <div class="custom-final-cta">
     <div class="custom-cta-inner">
       <h2 class="custom-cta-title">Ready to Ace Your Next Interview?</h2>
@@ -371,17 +398,15 @@
   <!-- JavaScript -->
   <script src="js/config.js"></script>
   <script src="js/analytics.js"></script>
-  <script src="js/navigation.js"></script>
+  <script src="js/unified-navigation.js"></script>
   <script>
     // Landing page analytics
     if (window.aiCoachAnalytics) {
-      // Track landing page views
       window.aiCoachAnalytics.track('landing_page_view', {
         referrer: document.referrer,
         user_agent: navigator.userAgent
       });
       
-      // Track CTA clicks
       document.querySelectorAll('.cta-button').forEach(button => {
         button.addEventListener('click', (e) => {
           window.aiCoachAnalytics.track('cta_clicked', {
