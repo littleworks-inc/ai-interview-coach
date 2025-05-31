@@ -867,3 +867,82 @@ textarea.char-over {
   border-color: #667eea;
   transform: translateY(-1px);
 }
+
+/* Benefits Callout */
+.benefits-callout {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  padding: 8px 16px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.benefit-icon {
+  font-size: 16px;
+}
+
+/* Skip Section */
+.skip-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.skip-text {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.skip-text strong {
+  color: #374151;
+}
+
+/* Generate Section */
+.generate-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+/* Resume Summary Section */
+.resume-summary-section {
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.resume-summary-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness for New Components */
+@media (max-width: 768px) {
+  .benefits-callout {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .benefit-item {
+    justify-content: center;
+    padding: 10px 20px;
+  }
+}
