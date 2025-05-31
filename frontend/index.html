@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎯 AI Interview Coach</title>
+  
+  <!-- SEO Optimization -->
+  <title>🎯 AI Interview Coach | Get Interview-Ready in Minutes</title>
+  <meta name="description" content="Ace your next interview with AI-powered coaching that adapts to your background and the job you want. Get personalized questions and expert answers in 60 seconds.">
+  <meta name="keywords" content="interview preparation, AI interview coach, job interview questions, interview practice, career coaching">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Interview Coach | Get Interview-Ready in Minutes">
+  <meta property="og:description" content="Ace your next interview with AI-powered coaching that adapts to your background and the job you want.">
+  <meta property="og:url" content="https://aiinterviewcoach.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- CSS Files -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
 </head>
-<body>
+<body class="landing-page">
 
   <!-- Header with Navigation -->
-  <header>
-    <nav class="header-navbar">
+  <header class="landing-header">
+    <nav class="landing-navbar">
       <!-- Brand -->
       <a href="index.html" class="header-brand">
         <span class="brand-icon">🎯</span>
@@ -26,34 +39,12 @@
         </div>
       </a>
       
-      <!-- Main Navigation -->
-      <div class="main-nav" id="mainNav">
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="index.html" class="nav-link active">
-              <span class="nav-icon">🎯</span>
-              Question Generator
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="tips.html" class="nav-link">
-              <span class="nav-icon">💡</span>
-              Interview Tips
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">📝</span>
-              Resume Analysis
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">🎤</span>
-              Practice Mode
-            </a>
-          </li>
-        </ul>
+      <!-- Navigation -->
+      <div class="nav-links">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="tips.html" class="nav-link">Tips</a>
+        <a href="app.html" class="nav-link cta-nav">Get Started</a>
       </div>
       
       <!-- Mobile Menu Toggle -->
@@ -64,220 +55,343 @@
   </header>
 
   <!-- Hero Section -->
-  <div class="hero-section">
-    <div class="hero-content">
-      <h2 class="hero-title">Get customized interview questions</h2>
-      <p class="hero-subtitle">Paste any job description and get tailored interview questions with expert example answers</p>
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- Enhanced Input Section -->
-    <div class="input-section">
-      <!-- Input Header -->
-      <div class="input-header">
-        <h2 class="input-title">
-          <span>📋</span>
-          Paste Your Job Description
-        </h2>
-        <p class="input-subtitle">
-          Add any job posting and get personalized interview questions with expert example answers in seconds
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">🚀</span>
+          <span>Join 2,500+ job seekers who landed their dream roles</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Ace your next interview with 
+          <span class="highlight">AI-powered coaching</span> 
+          that adapts to your background
+        </h1>
+        
+        <p class="hero-subtitle">
+          Get interview-ready in minutes with personalized questions and confidence-building answers tailored to any job description. No signup required.
         </p>
         
-        <!-- Process Steps -->
-        <div class="input-steps">
-          <div class="input-step">
-            <div class="step-number">1</div>
-            <span>Paste job description</span>
+        <div class="hero-cta">
+          <a href="app.html" class="cta-button primary">
+            <span class="cta-icon">✨</span>
+            <span>Generate My Questions</span>
+          </a>
+          <div class="cta-note">
+            <span>⚡</span>
+            <span>Ready in 60 seconds • Completely free</span>
           </div>
-          <div class="input-step">
-            <div class="step-number">2</div>
-            <span>Add your background</span>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">15,000+</div>
+            <div class="stat-label">Questions Generated</div>
           </div>
-          <div class="input-step">
-            <div class="step-number">3</div>
-            <span>Get tailored questions</span>
+          <div class="stat">
+            <div class="stat-number">92%</div>
+            <div class="stat-label">Feel More Confident</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">60 sec</div>
+            <div class="stat-label">Average Prep Time</div>
           </div>
         </div>
       </div>
-
-      <!-- Enhanced Textarea -->
-      <div class="textarea-container">
-        <div class="textarea-wrapper" id="textareaWrapper">
-          <textarea 
-            id="jobDescription" 
-            placeholder="Paste your job description here...
-
-For example:
-• Software Engineer at Google
-• Marketing Manager role requirements  
-• Sales Associate job posting
-• Any job description from LinkedIn, Indeed, or company websites
-
-The more details you provide, the better your personalized questions will be!"
-            oninput="updateCharacterCount()"
-            onfocus="handleTextareaFocus()"
-            onblur="handleTextareaBlur()"
-          ></textarea>
-        </div>
-        
-        <!-- Enhanced Character Counter -->
-        <div class="character-counter">
-          <div class="char-count-section">
-            <div class="char-count-display">
-              <span id="charCount">0</span>
-              <span class="char-divider">/</span>
-              <span id="charLimit">10,000</span>
-              <span>characters</span>
+      
+      <div class="hero-visual">
+        <div class="app-preview">
+          <div class="preview-header">
+            <div class="preview-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="preview-title">AI Interview Coach</div>
+          </div>
+          <div class="preview-content">
+            <div class="preview-input">
+              <div class="input-label">📋 Paste Your Job Description</div>
+              <div class="input-preview">Software Engineer at Google...</div>
+            </div>
+            <div class="preview-arrow">↓</div>
+            <div class="preview-output">
+              <div class="question-preview">
+                <div class="question-icon">❓</div>
+                <div class="question-text">Tell me about a time when you had to debug a complex system issue...</div>
+              </div>
+              <div class="answer-preview">
+                <div class="answer-icon">💡</div>
+                <div class="answer-text">In my previous role at TechCorp, I encountered a challenging...</div>
+              </div>
             </div>
           </div>
-          <span id="charStatus" class="char-status"></span>
-        </div>
-        <div id="charWarning" class="char-warning" style="display: none;"></div>
-      </div>
-
-      <!-- Example Job Descriptions -->
-      <div class="example-jobs">
-        <div class="example-jobs-title">
-          <span>💡</span>
-          Try these examples:
-        </div>
-        <div class="example-jobs-list">
-          <button class="example-job-btn" onclick="loadExampleJob('software-engineer')">Software Engineer</button>
-          <button class="example-job-btn" onclick="loadExampleJob('product-manager')">Product Manager</button>
-          <button class="example-job-btn" onclick="loadExampleJob('data-scientist')">Data Scientist</button>
-          <button class="example-job-btn" onclick="loadExampleJob('marketing-manager')">Marketing Manager</button>
-          <button class="example-job-btn" onclick="loadExampleJob('sales-rep')">Sales Representative</button>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Resume Summary Section -->
-    <div class="input-section resume-summary-section" id="resumeSummarySection" style="display: none;">
-      <!-- Section Header -->
-      <div class="input-header">
-        <h2 class="input-title">
-          <span>👤</span>
-          Add Your Background (Optional)
-        </h2>
-        <p class="input-subtitle">
-          Help us personalize your interview questions by sharing a brief summary of your experience, skills, and achievements
-        </p>
-        
-        <!-- Benefits Callout -->
-        <div class="benefits-callout">
-          <div class="benefit-item">
-            <span class="benefit-icon">🎯</span>
-            <span>More targeted questions</span>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-icon">📈</span>
-            <span>Experience-appropriate answers</span>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-icon">⚡</span>
-            <span>Better preparation tips</span>
-          </div>
-        </div>
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Get interview-ready in three simple steps</p>
       </div>
-
-      <!-- Resume Summary Textarea -->
-      <div class="textarea-container">
-        <div class="textarea-wrapper" id="resumeTextareaWrapper">
-          <textarea 
-            id="resumeSummary" 
-            placeholder="Write a brief professional summary about yourself...
-
-Example format:
-• Years of experience and industry
-• Key skills and technologies 
-• Major achievements with numbers
-• Career goals or focus areas
-
-Keep it concise (3-4 sentences, under 800 characters)"
-            oninput="updateResumeCharacterCount()"
-            onfocus="handleResumeTextareaFocus()"
-            onblur="handleResumeTextareaBlur()"
-            maxlength="800"
-          ></textarea>
+      
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">📋</div>
+          <h3 class="step-title">Paste Job Description</h3>
+          <p class="step-description">Copy any job posting from LinkedIn, Indeed, or company websites. Our AI analyzes the requirements instantly.</p>
         </div>
         
-        <!-- Character Counter -->
-        <div class="character-counter">
-          <div class="char-count-section">
-            <div class="char-count-display">
-              <span id="resumeCharCount">0</span>
-              <span class="char-divider">/</span>
-              <span id="resumeCharLimit">800</span>
-              <span>characters</span>
-            </div>
-          </div>
-          <span id="resumeCharStatus" class="char-status"></span>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">🤖</div>
+          <h3 class="step-title">Get AI-Personalized Questions</h3>
+          <p class="step-description">Receive 5-7 targeted questions based on the role level, skills, and industry. Each question reflects what real hiring managers ask.</p>
         </div>
-        <div id="resumeCharWarning" class="char-warning" style="display: none;"></div>
-      </div>
-
-      <!-- Example Resume Summaries -->
-      <!-- Example Resume Summaries - SIMPLIFIED VERSION -->
-      <div class="example-resumes">
-        <div class="example-resumes-title">
-          <span>💡</span>
-          Try these examples:
-        </div>
-        <div class="example-resumes-list">
-          <button class="resume-example-btn" onclick="loadResumeExample('tech', 'entry')">Tech - Entry Level</button>
-          <button class="resume-example-btn" onclick="loadResumeExample('tech', 'mid')">Tech - Mid Level</button>
-          <button class="resume-example-btn" onclick="loadResumeExample('finance', 'mid')">Finance Professional</button>
-          <button class="resume-example-btn" onclick="loadResumeExample('marketing', 'entry')">Marketing Specialist</button>
-          <button class="resume-example-btn" onclick="loadResumeExample('sales', 'mid')">Sales Representative</button>
-          <button class="resume-example-btn" onclick="loadResumeExample('healthcare', 'mid')">Healthcare Professional</button>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">💪</div>
+          <h3 class="step-title">Practice with Expert Answers</h3>
+          <p class="step-description">Study detailed example answers that demonstrate relevant experience and skills. Copy, practice, and build confidence.</p>
         </div>
       </div>
-
-      <!-- Skip Option -->
-      <div class="skip-section">
-        <p class="skip-text">
-          <strong>Don't want to add your background?</strong> No problem! We'll create questions based on the job description only.
-        </p>
-      </div>
-    </div>
-
-    <!-- Enhanced Generate Button -->
-    <div class="generate-section">
-      <button class="generate-btn" onclick="generateQuestions()">
-        <span class="btn-icon">✨</span>
-        <span>Generate Interview Questions</span>
-      </button>
-    </div>
-
-    <div id="output">Your interview questions will appear here.</div>
-    
-    <!-- Tips Callout -->
-    <div class="tips-callout">
-      <div class="tips-callout-content">
-        <div class="tips-callout-text">
-          <h3>💡 Need interview tips and strategies?</h3>
-          <p>Master your interview with our comprehensive guide covering communication, technical questions, behavioral interviews, body language, and preparation strategies.</p>
-        </div>
-        <a href="tips.html" class="tips-callout-btn">
-          <span>View Interview Tips</span>
+      
+      <div class="step-cta">
+        <a href="app.html" class="cta-button secondary">
+          <span>Try It Now</span>
           <span>→</span>
         </a>
       </div>
     </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose AI Interview Coach?</h2>
+        <p class="section-subtitle">Everything you need to ace your next interview</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Ready in 60 Seconds</h3>
+          <p class="feature-description">No lengthy courses or complex setup. Paste your job description and get instant, personalized coaching.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <h3 class="feature-title">Tailored to Your Experience</h3>
+          <p class="feature-description">Add your background for questions that match your experience level and highlight your unique strengths.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">💼</div>
+          <h3 class="feature-title">Works for Any Industry</h3>
+          <p class="feature-description">Perfect for tech, marketing, sales, finance, healthcare, and more. Our AI adapts to any role or industry.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <h3 class="feature-title">Practice Anywhere</h3>
+          <p class="feature-description">Mobile-friendly design lets you prepare on the go. Copy questions to practice with friends or coaches.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">🧠</div>
+          <h3 class="feature-title">Expert-Level Answers</h3>
+          <p class="feature-description">Learn from example answers crafted by hiring managers with 15+ years of experience across multiple industries.</p>
+        </div>
+        
+        <div class="feature">
+          <div class="feature-icon">🆓</div>
+          <h3 class="feature-title">Completely Free</h3>
+          <p class="feature-description">No hidden costs, no credit card required, no signup needed. Just paste your job description and start preparing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section class="social-proof-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Trusted by Job Seekers Worldwide</h2>
+        <p class="section-subtitle">Join thousands who've improved their interview confidence</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"The questions were spot-on for my software engineering interview. The example answers helped me structure my responses perfectly."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍💻</div>
+            <div class="author-info">
+              <div class="author-name">Alex Chen</div>
+              <div class="author-role">Software Engineer at Microsoft</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"I was nervous about switching from finance to marketing. This tool gave me confidence by showing exactly what to expect."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍💼</div>
+            <div class="author-info">
+              <div class="author-name">Sarah Martinez</div>
+              <div class="author-role">Marketing Manager at HubSpot</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p>"Game-changer for remote interviews. I practiced the questions beforehand and felt completely prepared during the actual call."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍🎨</div>
+            <div class="author-info">
+              <div class="author-name">David Kim</div>
+              <div class="author-role">Product Designer at Figma</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="proof-number">2,500+</div>
+          <div class="proof-label">Successful Job Placements</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-number">50+</div>
+          <div class="proof-label">Industries Covered</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-number">4.9/5</div>
+          <div class="proof-label">User Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section - Clean Class-Based Implementation -->
+  <div class="custom-final-cta">
+    <div class="custom-cta-inner">
+      <h2 class="custom-cta-title">Ready to Ace Your Next Interview?</h2>
+      <p class="custom-cta-subtitle">Join thousands of job seekers who've improved their interview confidence</p>
+      
+      <div class="custom-cta-buttons">
+        <a href="app.html" class="custom-cta-btn primary">
+          <span>🚀</span>
+          <span>Generate My Questions</span>
+        </a>
+        <a href="tips.html" class="custom-cta-btn secondary">
+          <span>💡</span>
+          <span>View Interview Tips</span>
+        </a>
+      </div>
+      
+      <div class="custom-cta-features">
+        <div class="custom-feature">
+          <span class="custom-check">✅</span>
+          <span>No signup required</span>
+        </div>
+        <div class="custom-feature">
+          <span class="custom-check">✅</span>
+          <span>Works in 60 seconds</span>
+        </div>
+        <div class="custom-feature">
+          <span class="custom-check">✅</span>
+          <span>Completely free</span>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <!-- JavaScript Files -->
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-icon">🎯</span>
+            <span class="brand-name">AI Interview Coach</span>
+          </div>
+          <p class="footer-description">
+            Smart interview preparation powered by AI. Get personalized questions and expert answers for any job.
+          </p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-section">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="app.html">Question Generator</a></li>
+              <li><a href="tips.html">Interview Tips</a></li>
+              <li><a href="#features">Features</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="tips.html">Best Practices</a></li>
+              <li><a href="#testimonials">Success Stories</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#privacy">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 AI Interview Coach. Made with ❤️ for job seekers worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
   <script src="js/config.js"></script>
   <script src="js/analytics.js"></script>
-  <script src="js/character-counter.js"></script>
-  <script src="js/resume-examples.js"></script>
-  <script src="js/main.js"></script>
   <script src="js/navigation.js"></script>
-  <script src="js/app.js"></script> 
-  <link rel="stylesheet" href="css/validation.css">
-  <script src="js/content-validator.js"></script>
-  <script src="js/validation-ui.js"></script>
+  <script>
+    // Landing page analytics
+    if (window.aiCoachAnalytics) {
+      // Track landing page views
+      window.aiCoachAnalytics.track('landing_page_view', {
+        referrer: document.referrer,
+        user_agent: navigator.userAgent
+      });
+      
+      // Track CTA clicks
+      document.querySelectorAll('.cta-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          window.aiCoachAnalytics.track('cta_clicked', {
+            button_text: e.target.textContent.trim(),
+            button_location: e.target.closest('section')?.className || 'unknown'
+          });
+        });
+      });
+    }
+  </script>
 
 </body>
 </html>
