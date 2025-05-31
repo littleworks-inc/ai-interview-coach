@@ -1,0 +1,358 @@
+/* ==========================================
+   AI Interview Coach - ENHANCED Unified Background System
+   FORCES blue gradient across ALL pages
+   ========================================== */
+
+/* ==========================================
+   FORCE BLUE GRADIENT ON ALL PAGES
+   ========================================== */
+
+/* Override any existing body backgrounds with !important */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Specific page classes - all get same blue gradient */
+body.landing-page,
+body.app-page,
+body.tips-page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Ensure html element also has gradient for full coverage */
+html {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  min-height: 100vh !important;
+}
+
+/* ==========================================
+   HERO SECTIONS - UNIFIED BLUE STYLING
+   ========================================== */
+
+.hero-section {
+  background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%) !important;
+  color: white !important;
+  padding: 60px 0 !important;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Grid pattern overlay for visual depth */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1.2;
+  color: white !important;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 400;
+  line-height: 1.6;
+  color: white !important;
+}
+
+/* ==========================================
+   CONTAINER SYSTEM - WHITE ON BLUE
+   ========================================== */
+
+/* Main container for all pages - white containers on blue background */
+.container {
+  max-width: 900px;
+  margin: 40px auto !important;
+  padding: 30px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Landing page specific containers */
+.landing-page .container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Exception: Landing page sections that should be full-width */
+.landing-page .how-it-works-section .container,
+.landing-page .features-section .container,
+.landing-page .social-proof-section .container,
+.landing-page .custom-final-cta .container,
+.landing-page .landing-footer .container {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  max-width: 1200px !important;
+  padding: 0 40px !important;
+}
+
+/* ==========================================
+   LANDING PAGE SECTIONS - PROPER BACKGROUNDS
+   ========================================== */
+
+/* White sections for landing page */
+.how-it-works-section,
+.features-section,
+.social-proof-section {
+  background: white !important;
+  padding: 100px 0 !important;
+}
+
+/* Alternating background colors */
+.how-it-works-section,
+.social-proof-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+}
+
+.features-section {
+  background: white !important;
+}
+
+/* Special sections */
+.custom-final-cta {
+  background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%) !important;
+  color: white !important;
+  padding: 100px 0 !important;
+}
+
+.landing-footer {
+  background: #1f2937 !important;
+  color: white !important;
+  padding: 60px 0 30px 0 !important;
+}
+
+/* ==========================================
+   INPUT SECTIONS - WHITE ON BLUE
+   ========================================== */
+
+.input-section {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  margin-bottom: 40px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.input-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* ==========================================
+   TIPS PAGE SPECIFIC STYLING
+   ========================================== */
+
+/* Tips table wrapper - white on blue */
+.tips-table-wrapper {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  overflow: hidden;
+}
+
+/* Footer should be visible on blue background */
+footer {
+  background: rgba(31, 41, 55, 0.9) !important;
+  color: white !important;
+  margin-top: 40px !important;
+  padding: 20px 0 !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+footer p {
+  color: white !important;
+  text-align: center;
+  margin: 0 !important;
+}
+
+footer a {
+  color: #60a5fa !important;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: white !important;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0 !important;
+  }
+  
+  .hero-title {
+    font-size: 28px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px !important;
+  }
+  
+  .container {
+    margin: 20px !important;
+    padding: 24px !important;
+    border-radius: 16px !important;
+  }
+  
+  .input-section {
+    padding: 24px !important;
+    border-radius: 16px !important;
+  }
+  
+  /* Landing page mobile adjustments */
+  .landing-page .how-it-works-section .container,
+  .landing-page .features-section .container,
+  .landing-page .social-proof-section .container {
+    padding: 0 20px !important;
+  }
+  
+  .how-it-works-section,
+  .features-section,
+  .social-proof-section,
+  .custom-final-cta {
+    padding: 60px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 0 !important;
+  }
+  
+  .hero-title {
+    font-size: 24px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px !important;
+  }
+  
+  .container {
+    margin: 10px !important;
+    padding: 20px !important;
+  }
+  
+  .input-section {
+    padding: 20px !important;
+  }
+}
+
+/* ==========================================
+   ANIMATIONS AND EFFECTS
+   ========================================== */
+
+/* Smooth transitions for all containers */
+.container,
+.input-section {
+  transition: all 0.3s ease !important;
+}
+
+.container:hover,
+.input-section:hover {
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Subtle animations for hero sections */
+.hero-content {
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   OVERRIDE ANY CONFLICTING STYLES
+   ========================================== */
+
+/* Force override any existing main.css styles */
+.app-page .container,
+.tips-page .container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Ensure blue background shows everywhere */
+.app-page,
+.tips-page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  min-height: 100vh !important;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  .hero-section {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .container {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .input-section {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}

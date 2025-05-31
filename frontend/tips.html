@@ -8,15 +8,17 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- CSS Files -->
+  <!-- CSS Files - ORDER MATTERS -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/tips-table.css">
+  <link rel="stylesheet" href="css/unified-navigation.css">
+  <link rel="stylesheet" href="css/unified-backgrounds.css">
 </head>
-<body>
+<body class="tips-page">
 
-  <!-- Header with Navigation -->
-  <header>
-    <nav class="header-navbar">
+  <!-- UNIFIED HEADER -->
+  <header class="unified-header">
+    <nav class="unified-navbar">
       <!-- Brand -->
       <a href="index.html" class="header-brand">
         <span class="brand-icon">🎯</span>
@@ -30,40 +32,43 @@
       <div class="main-nav" id="mainNav">
         <ul class="nav-menu">
           <li class="nav-item">
-            <a href="app.html" class="nav-link">
+            <a href="app.html" class="nav-link" data-page="app">
               <span class="nav-icon">🎯</span>
               Question Generator
             </a>
           </li>
           <li class="nav-item">
-            <a href="tips.html" class="nav-link active">
+            <a href="tips.html" class="nav-link" data-page="tips">
               <span class="nav-icon">💡</span>
-              Interview Tips
+              Tips
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">📝</span>
-              Resume Analysis
+            <a href="index.html#features" class="nav-link" data-page="features">
+              Features
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">🎤</span>
-              Practice Mode
+            <a href="index.html#how-it-works" class="nav-link" data-page="how-it-works">
+              How It Works
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="app.html" class="nav-link cta-nav">
+              Get Started
             </a>
           </li>
         </ul>
       </div>
       
       <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
         ☰
       </button>
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- UNIFIED HERO SECTION -->
   <div class="hero-section">
     <div class="hero-content">
       <h2 class="hero-title">DON'T SAY THIS IN AN INTERVIEW!</h2>
@@ -71,8 +76,8 @@
     </div>
   </div>
 
+  <!-- MAIN CONTENT WITH UNIFIED CONTAINER -->
   <div class="container">
-    
     <!-- Tips Table -->
     <div class="tips-table-container">
       <div class="table-header">
@@ -190,6 +195,48 @@
               <td class="dont-cell">I'm looking for something easier</td>
               <td class="do-cell">I'm seeking new challenges that will allow me to grow my skills in [specific area] and make a greater impact</td>
             </tr>
+
+            <!-- Additional Professional Responses -->
+            <tr>
+              <td class="dont-cell">I don't know</td>
+              <td class="do-cell">That's a great question. While I don't have direct experience with that specific scenario, I would approach it by [logical problem-solving process]</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">That's not my job</td>
+              <td class="do-cell">While that's outside my primary responsibilities, I'm always willing to help where I can and learn new skills that benefit the team</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I hate my current job</td>
+              <td class="do-cell">While I've learned a lot in my current role, I'm ready for new challenges that better align with my career aspirations in [specific field]</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I don't have any experience with that</td>
+              <td class="do-cell">While I haven't worked directly with [technology/process], I have experience with similar tools like [related technology] and I'm a quick learner</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I want to learn</td>
+              <td class="do-cell">I'm excited about the opportunity to expand my expertise in [specific area], building on my current knowledge of [related skills]</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I'm overqualified</td>
+              <td class="do-cell">My extensive experience allows me to hit the ground running and contribute immediately while bringing a strategic perspective to the role</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I want a challenge</td>
+              <td class="do-cell">I'm drawn to this role because it offers the opportunity to tackle complex problems like [specific challenge mentioned in job description]</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I'm a team player</td>
+              <td class="do-cell">I collaborate effectively with diverse teams - for example, I worked with design, engineering, and marketing to launch our product 3 weeks ahead of schedule</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I'm creative</td>
+              <td class="do-cell">I bring innovative solutions to complex problems - like when I redesigned our user onboarding process, increasing completion rates by 45%</td>
+            </tr>
+            <tr>
+              <td class="dont-cell">I work long hours</td>
+              <td class="do-cell">I'm committed to delivering quality results efficiently and meeting deadlines, like when I streamlined our reporting process to save 10 hours per week</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -202,7 +249,6 @@
       </button>
       <p class="print-note">Perfect for quick reference during interview preparation</p>
     </div>
-
   </div>
 
   <footer>
@@ -210,7 +256,7 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="js/navigation.js"></script>
+  <script src="js/unified-navigation.js"></script>
 
 </body>
 </html>

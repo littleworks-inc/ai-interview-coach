@@ -1,0 +1,237 @@
+/* ==========================================
+   AI Interview Coach - Unified Navigation Styles
+   Use this CSS file across all pages
+   ========================================== */
+
+.unified-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 123, 255, 0.1);
+}
+
+.unified-navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+}
+
+/* Brand Styling */
+.unified-navbar .header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.unified-navbar .header-brand:hover {
+  color: #007BFF;
+}
+
+.unified-navbar .brand-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.unified-navbar .brand-text h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.unified-navbar .brand-text .subtitle {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.8;
+  font-weight: 400;
+  color: inherit;
+}
+
+/* Navigation Menu */
+.unified-navbar .main-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unified-navbar .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unified-navbar .nav-item {
+  margin: 0;
+}
+
+.unified-navbar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.unified-navbar .nav-link:hover {
+  color: #007BFF;
+  background: rgba(0, 123, 255, 0.05);
+}
+
+.unified-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #007BFF;
+  transition: width 0.3s ease;
+}
+
+.unified-navbar .nav-link:hover::after {
+  width: 80%;
+}
+
+.unified-navbar .nav-link.active {
+  color: #007BFF;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.unified-navbar .nav-link.active::after {
+  width: 80%;
+}
+
+.unified-navbar .nav-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* CTA Button Styling */
+.unified-navbar .cta-nav {
+  background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%) !important;
+  color: white !important;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  border: none;
+}
+
+.unified-navbar .cta-nav:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  color: white !important;
+}
+
+.unified-navbar .cta-nav::after {
+  display: none;
+}
+
+/* Mobile Menu Toggle */
+.unified-navbar .mobile-menu-toggle {
+  display: none;
+  background: rgba(0, 123, 255, 0.1);
+  border: 1px solid rgba(0, 123, 255, 0.2);
+  border-radius: 8px;
+  color: #333333;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.unified-navbar .mobile-menu-toggle:hover {
+  background: rgba(0, 123, 255, 0.15);
+  color: #007BFF;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .unified-navbar {
+    padding: 16px 20px;
+    gap: 20px;
+  }
+  
+  .unified-navbar .brand-text h1 {
+    font-size: 20px;
+  }
+  
+  .unified-navbar .brand-text .subtitle {
+    font-size: 12px;
+  }
+  
+  .unified-navbar .brand-icon {
+    font-size: 28px;
+  }
+  
+  .unified-navbar .main-nav {
+    display: none;
+  }
+  
+  .unified-navbar .main-nav.mobile-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-top: 1px solid rgba(0, 123, 255, 0.1);
+  }
+  
+  .unified-navbar .main-nav.mobile-open .nav-menu {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .unified-navbar .main-nav.mobile-open .nav-link {
+    justify-content: center;
+    padding: 16px 20px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .unified-navbar .mobile-menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .unified-navbar {
+    padding: 12px 16px;
+  }
+  
+  .unified-navbar .brand-text h1 {
+    font-size: 18px;
+  }
+  
+  .unified-navbar .brand-icon {
+    font-size: 24px;
+  }
+}

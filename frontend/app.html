@@ -8,16 +8,18 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- CSS Files -->
+  <!-- CSS Files - ORDER MATTERS -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/validation.css">
+  <link rel="stylesheet" href="css/unified-navigation.css">
+  <link rel="stylesheet" href="css/unified-backgrounds.css">
 </head>
-<body>
+<body class="app-page">
 
-  <!-- Header with Navigation -->
-  <header>
-    <nav class="header-navbar">
+  <!-- UNIFIED HEADER -->
+  <header class="unified-header">
+    <nav class="unified-navbar">
       <!-- Brand -->
       <a href="index.html" class="header-brand">
         <span class="brand-icon">🎯</span>
@@ -31,47 +33,51 @@
       <div class="main-nav" id="mainNav">
         <ul class="nav-menu">
           <li class="nav-item">
-            <a href="app.html" class="nav-link active">
+            <a href="app.html" class="nav-link" data-page="app">
               <span class="nav-icon">🎯</span>
               Question Generator
             </a>
           </li>
           <li class="nav-item">
-            <a href="tips.html" class="nav-link">
+            <a href="tips.html" class="nav-link" data-page="tips">
               <span class="nav-icon">💡</span>
-              Interview Tips
+              Tips
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">📝</span>
-              Resume Analysis
+            <a href="index.html#features" class="nav-link" data-page="features">
+              Features
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link coming-soon">
-              <span class="nav-icon">🎤</span>
-              Practice Mode
+            <a href="index.html#how-it-works" class="nav-link" data-page="how-it-works">
+              How It Works
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="app.html" class="nav-link cta-nav">
+              Get Started
             </a>
           </li>
         </ul>
       </div>
       
       <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
         ☰
       </button>
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- UNIFIED HERO SECTION -->
   <div class="hero-section">
     <div class="hero-content">
-      <h2 class="hero-title">Get customized interview questions</h2>
+      <h2 class="hero-title">Get Customized Interview Questions</h2>
       <p class="hero-subtitle">Paste any job description and get tailored interview questions with expert example answers</p>
     </div>
   </div>
 
+  <!-- MAIN CONTENT WITH UNIFIED CONTAINER -->
   <div class="container">
     <!-- Enhanced Input Section -->
     <div class="input-section">
@@ -273,7 +279,7 @@ Keep it concise (3-4 sentences, under 800 characters)"
   <script src="js/character-counter.js"></script>
   <script src="js/resume-examples.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/navigation.js"></script>
+  <script src="js/unified-navigation.js"></script>
   <script src="js/app.js"></script> 
   <script src="js/content-validator.js"></script>
   <script src="js/validation-ui.js"></script>
