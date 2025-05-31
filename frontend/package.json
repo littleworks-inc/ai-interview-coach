@@ -1,0 +1,42 @@
+{
+  "name": "ai-interview-coach-frontend",
+  "version": "1.0.0",
+  "description": "AI Interview Coach Frontend Application",
+  "main": "index.html",
+  "scripts": {
+    "build:config": "node config/build.js",
+    "build:config:info": "node config/build.js --deployment-info --show-features",
+    "build:dev": "NODE_ENV=development npm run build:config",
+    "build:staging": "NODE_ENV=staging npm run build:config",
+    "build:prod": "NODE_ENV=production npm run build:config",
+    "build:test": "NODE_ENV=test npm run build:config",
+    "dev": "npm run build:dev && echo '✅ Frontend configured for development'",
+    "staging": "npm run build:staging && echo '✅ Frontend configured for staging'",
+    "prod": "npm run build:prod && echo '✅ Frontend configured for production'",
+    "serve": "python3 -m http.server 8080 || python -m http.server 8080",
+    "serve:node": "npx serve . -p 8080",
+    "start": "npm run dev && npm run serve",
+    "start:staging": "npm run staging && npm run serve:node",
+    "start:prod": "npm run prod && npm run serve:node",
+    "validate:config": "node -e \"require('./config/environments.js'); console.log('✅ All environment configurations are valid')\"",
+    "clean": "rm -f js/config.js deployment-info.json",
+    "info": "npm run build:config:info",
+    "deploy:staging": "npm run clean && npm run staging && npm run info",
+    "deploy:prod": "npm run clean && npm run prod && npm run info"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "interview",
+    "ai",
+    "coach",
+    "questions",
+    "preparation"
+  ],
+  "author": "AI Interview Coach Team",
+  "license": "MIT"
+}

@@ -7,13 +7,33 @@
 // ==========================================
 
 const API_CONFIG = {
-  BASE_URL: 'http://localhost:3000',  // Backend server URL
+  BASE_URL: window.APP_CONFIG?.API_BASE_URL || 'http://localhost:3000',
   ENDPOINTS: {
-    GENERATE: '/api/generate'
+    GENERATE: '/api/generate',
+    VALIDATE: '/api/validate'
   },
-  TIMEOUT: 90000, // 90 seconds (increased from 45 seconds)
+  TIMEOUT: window.APP_CONFIG?.REQUEST_TIMEOUT || 90000,
   MODEL: 'qwen/qwen3-30b-a3b:free'
 };
+
+
+// Helper function to get full API URLs
+const getApiUrl = (endpoint) => {
+  return window.APP_CONFIG?.getApiUrl ? 
+    window.APP_CONFIG.getApiUrl(endpoint) : 
+    `${API_CONFIG.BASE_URL}${endpoint}`;
+};
+
+// Debug logging in development
+if (window.APP_CONFIG?.DEBUG_MODE) {
+  console.log('[APP CONFIG] Application configuration loaded:', {
+    environment: window.APP_CONFIG.ENVIRONMENT,
+    apiBaseUrl: API_CONFIG.BASE_URL,
+    analyticsEnabled: window.APP_CONFIG.ANALYTICS_ENABLED,
+    features: window.APP_CONFIG.FEATURES,
+    buildTimestamp: window.APP_CONFIG.BUILD_TIMESTAMP
+  });
+}
 
 const TokenTracker = {
   estimateTokenCount: function(text) {

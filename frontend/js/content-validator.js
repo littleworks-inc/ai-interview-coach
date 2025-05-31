@@ -7,9 +7,14 @@
  */
 class ContentValidator {
   constructor() {
-    this.apiEndpoint = 'http://localhost:3000/api/validate'; // We'll create this endpoint
-    this.debounceDelay = 800; // Wait 800ms after user stops typing
+    this.apiEndpoint = window.APP_CONFIG?.getApiUrl ? 
+      window.APP_CONFIG.getApiUrl('/api/validate') : 
+      'http://localhost:3000/api/validate';
+    this.debounceDelay = window.APP_CONFIG?.VALIDATION_DEBOUNCE_DELAY || 800;
     this.validationTimeouts = new Map();
+    
+    // Log initialization in debug mode
+    window.APP_CONFIG?.log('Content validator initialized with endpoint:', this.apiEndpoint);
   }
 
   /**

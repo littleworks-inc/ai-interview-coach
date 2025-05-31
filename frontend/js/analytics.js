@@ -7,11 +7,21 @@ class AnalyticsManager {
     this.sessionId = this.getOrCreateSessionId();
     this.eventQueue = [];
     this.isOnline = navigator.onLine;
-    this.batchInterval = 30000; // 30 seconds
-    this.maxQueueSize = 50;
-    this.apiEndpoint = 'http://localhost:3000/api/analytics';
     
-    this.init();
+    // Use configuration for settings
+    this.batchInterval = window.APP_CONFIG?.ANALYTICS_BATCH_INTERVAL || 30000;
+    this.maxQueueSize = window.APP_CONFIG?.ANALYTICS_MAX_QUEUE_SIZE || 50;
+    this.apiEndpoint = window.APP_CONFIG?.getApiUrl ? 
+      window.APP_CONFIG.getApiUrl('/api/analytics') : 
+      'http://localhost:3000/api/analytics';
+    this.enabled = window.APP_CONFIG?.ANALYTICS_ENABLED !== false;
+    
+    if (this.enabled) {
+      this.init();
+      window.APP_CONFIG?.log('Analytics initialized for environment:', window.APP_CONFIG.ENVIRONMENT);
+    } else if (window.APP_CONFIG?.DEBUG_MODE) {
+      console.log('[ANALYTICS] Disabled by configuration');
+    }
   }
 
   /**
